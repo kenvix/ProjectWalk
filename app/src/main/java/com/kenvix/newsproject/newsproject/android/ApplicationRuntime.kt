@@ -3,10 +3,8 @@ package com.kenvix.newsproject.newsproject.android
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
-import android.content.res.Resources
 import android.graphics.drawable.Drawable
 import android.support.annotation.NonNull
-import android.view.View
 
 class ApplicationRuntime : Application() {
 
@@ -46,6 +44,9 @@ class ApplicationRuntime : Application() {
         @JvmStatic
         val viewResources
             get() = appContext.resources
+
+        @JvmStatic
+        fun getPackageName(name: String) = BuildConfig.APPLICATION_ID + "." + name
     }
 
     override fun onCreate() {

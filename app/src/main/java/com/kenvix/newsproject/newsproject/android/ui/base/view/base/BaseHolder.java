@@ -10,7 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.kenvix.newsproject.newsproject.android.ui.base.BaseActivity;
-import com.kenvix.rconmanager.utils.Invoker;
+import com.kenvix.newsproject.newsproject.android.utils.Invoker;
 
 public abstract class BaseHolder<T> extends RecyclerView.ViewHolder {
 
