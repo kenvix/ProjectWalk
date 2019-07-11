@@ -13,8 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.kenvix.rconmanager.utils.Invoker;
-
 public abstract class BaseFragment extends Fragment {
 
     @Nullable

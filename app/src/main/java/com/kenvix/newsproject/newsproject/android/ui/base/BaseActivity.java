@@ -18,8 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.kenvix.rconmanager.R;
-import com.kenvix.rconmanager.utils.Invoker;
+import com.kenvix.newsproject.newsproject.android.R;
 
 import java.util.function.Consumer;
 

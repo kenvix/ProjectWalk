@@ -1,0 +1,12 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.squareup:javapoet:1.8.0'
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-collections4
+    implementation 'org.apache.commons:commons-collections4:4.1'
+    //implementation 'com.google.auto.service:auto-service:1.0-rc2'
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
