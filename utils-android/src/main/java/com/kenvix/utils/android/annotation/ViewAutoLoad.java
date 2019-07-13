@@ -11,4 +11,5 @@ import java.lang.annotation.Target;
 @SuppressWarnings("UnusedDeclaration")
 @Target(ElementType.FIELD)
 public @interface ViewAutoLoad {
+    int value() default 0;
 }

@@ -6,7 +6,7 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.support.annotation.NonNull
 
-class ApplicationRuntime : Application() {
+class ApplicationEnvironment : Application() {
 
     companion object Utils {
         @SuppressLint("StaticFieldLeak")

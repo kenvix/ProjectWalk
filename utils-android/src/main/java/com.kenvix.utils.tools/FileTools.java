@@ -72,10 +72,6 @@ public abstract class FileTools {
         return path;
     }
 
-    public static String readAllText(String filePath) throws IOException {
-        return new String(Files.readAllBytes(Paths.get(filePath)));
-    }
-
     public static long directCopy(FileChannel from, FileChannel to, long offset) throws IOException {
         return from.transferTo(offset, from.size(), to);
     }

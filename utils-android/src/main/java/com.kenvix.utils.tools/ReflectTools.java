@@ -1,6 +1,6 @@
 package com.kenvix.utils.tools;
 
-import com.kenvix.utils.annotation.Description;
+import com.kenvix.utils.android.annotation.Description;
 
 import java.lang.reflect.Method;
 import java.util.NoSuchElementException;

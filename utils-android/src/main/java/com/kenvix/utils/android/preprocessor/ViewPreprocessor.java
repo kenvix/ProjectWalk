@@ -1,14 +1,15 @@
 package com.kenvix.utils.android.preprocessor;
 
-import com.kenvix.utils.Environment;
-import com.kenvix.utils.StringTools;
-import com.kenvix.utils.annotation.ViewAutoLoad;
+import com.kenvix.utils.android.Environment;
+import com.kenvix.utils.tools.StringTools;
+import com.kenvix.utils.android.annotation.ViewAutoLoad;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,7 +24,7 @@ import javax.lang.model.element.Name;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.type.TypeMirror;
 
-import static com.kenvix.utils.PreprocessorName.getViewAutoLoaderMethodName;
+import static com.kenvix.utils.android.PreprocessorName.getViewAutoLoaderMethodName;
 
 public class ViewPreprocessor extends BasePreprocessor {
 
@@ -50,7 +51,7 @@ public class ViewPreprocessor extends BasePreprocessor {
         try {
             saveOutputJavaFile(javaFile);
         } catch (IOException ex) {
-            throw new IllegalStateException(ex.toString());
+            throw new UncheckedIOException(ex);
         }
 
         return true;
@@ -74,21 +75,27 @@ public class ViewPreprocessor extends BasePreprocessor {
                 final boolean generateCodeForActivityClass = targetClassFullName.endsWith("Activity");
 
                 if(generateCodeForActivityClass) {
-                    builders.forEach(builder -> builder
-                            .beginControlFlow("if(target.$N == null)", fieldVarName)
-                            .addStatement("target.$N = target.findViewById($T.$N)",
-                                    fieldVarName,
-                                    RId,
-                                    RMemberName)
-                            .endControlFlow());
+                    builders.forEach(builder -> {
+                        MethodSpec.Builder flow = builder.beginControlFlow("if(target.$N == null)", fieldVarName);
+
+                        if (annotation.value() == 0)
+                            flow.addStatement("target.$N = target.findViewById($T.$N)", fieldVarName, RId, RMemberName);
+                        else
+                            flow.addStatement("target.$N = target.findViewById($L)", fieldVarName, annotation.value());
+
+                        flow.endControlFlow();
+                    });
                 } else {
-                    builders.forEach(builder -> builder
-                            .beginControlFlow("if(target.$N == null)", fieldVarName)
-                            .addStatement("target.$N = targetView.findViewById($T.$N)",
-                                    fieldVarName,
-                                    RId,
-                                    RMemberName)
-                            .endControlFlow());
+                    builders.forEach(builder -> {
+                        MethodSpec.Builder flow = builder.beginControlFlow("if(target.$N == null)", fieldVarName);
+
+                        if (annotation.value() == 0)
+                            flow.addStatement("target.$N = targetView.findViewById($T.$N)", fieldVarName, RId, RMemberName);
+                        else
+                            flow.addStatement("target.$N = targetView.findViewById($L)", fieldVarName, annotation.value());
+
+                        flow.endControlFlow();
+                    });
                 }
 
                 builders.forEach(builder -> builder

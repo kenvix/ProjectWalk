@@ -9,6 +9,7 @@ import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -154,7 +155,7 @@ public class FormPreprocessor extends BasePreprocessor {
         try {
             saveOutputJavaFile(javaFile);
         } catch (IOException ex) {
-            throw new IllegalStateException(ex.toString());
+            throw new UncheckedIOException(ex);
         }
 
         return true;

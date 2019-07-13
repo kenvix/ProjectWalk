@@ -99,7 +99,7 @@ public abstract class BasePreprocessor extends AbstractProcessor {
         messager = processingEnv.getMessager();
         onPreprocessorInit();
 
-        messager.printMessage(Diagnostic.Kind.NOTE, "Preprocessor: " + this.getClass().getSimpleName() + " Initialized");
+        messager.printMessage(Diagnostic.Kind.NOTE, "Annotation Preprocessor: " + this.getClass().getSimpleName() + " Initialized");
     }
 
     protected void onPreprocessorInit() {}
@@ -173,6 +173,7 @@ public abstract class BasePreprocessor extends AbstractProcessor {
      * @param javaFile
      */
     protected final void saveOutputJavaFile(JavaFile javaFile) throws IOException {
+        messager.printMessage(Diagnostic.Kind.NOTE, "Annotation Preprocessor: " + this.getClass().getSimpleName() + " saved output file:" + javaFile.packageName);
         javaFile.writeTo(filer);
     }
 }

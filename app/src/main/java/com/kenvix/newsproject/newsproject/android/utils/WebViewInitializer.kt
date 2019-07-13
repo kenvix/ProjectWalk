@@ -3,7 +3,7 @@ package com.kenvix.newsproject.newsproject.android.utils
 import android.annotation.SuppressLint
 import android.webkit.WebSettings
 import android.webkit.WebView
-import com.kenvix.newsproject.newsproject.android.ApplicationRuntime
+import com.kenvix.newsproject.newsproject.android.ApplicationEnvironment
 
 class WebViewInitializer {
     var extendUserAgent = "Kenvix NewsProject-Android Client"
@@ -25,7 +25,7 @@ class WebViewInitializer {
 
         //允许缓存，设置缓存位置
         webSettings.setAppCacheEnabled(true)
-        webSettings.setAppCachePath(ApplicationRuntime.appContext.cacheDir.path)
+        webSettings.setAppCachePath(ApplicationEnvironment.appContext.cacheDir.path)
 
         //允许WebView使用File协议
         webSettings.allowFileAccess = true
