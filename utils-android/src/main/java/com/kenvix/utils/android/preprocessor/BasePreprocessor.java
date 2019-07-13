@@ -142,6 +142,8 @@ public abstract class BasePreprocessor extends AbstractProcessor {
 
     @Override
     public final Set<String> getSupportedAnnotationTypes() {
+        //Arrays.stream(getSupportedAnnotations()).forEach(annotationClass -> messager.printMessage(Diagnostic.Kind.NOTE, annotationClass.getCanonicalName()));
+
         return new LinkedHashSet<String>() {{
             Arrays.stream(getSupportedAnnotations()).forEach(annotationClass -> add(annotationClass.getCanonicalName()));
         }};

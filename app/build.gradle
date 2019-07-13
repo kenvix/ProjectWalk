@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt' //Kenvix Annotation Preprocessor for Kotlin Projects
 
 android {
     compileSdkVersion 28
@@ -35,6 +36,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation project(path: ':utils-android')
+    //Kenvix Annotation Preprocessor
+    //for Kotlin Projects
+    kapt project(':utils-android')
+    //for Java and Kotlin Projects
     annotationProcessor project(':utils-android')
 }
 repositories {
