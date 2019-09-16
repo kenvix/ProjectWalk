@@ -1,9 +1,9 @@
-package com.kenvix.newsproject.newsproject.android.utils
+package com.kenvix.walk.utils
 
 import android.annotation.SuppressLint
 import android.webkit.WebSettings
 import android.webkit.WebView
-import com.kenvix.newsproject.newsproject.android.ApplicationEnvironment
+import com.kenvix.walk.ApplicationEnvironment
 
 class WebViewInitializer {
     var extendUserAgent = "Kenvix NewsProject-Android Client"

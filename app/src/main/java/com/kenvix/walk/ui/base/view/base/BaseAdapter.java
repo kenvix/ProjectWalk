@@ -3,7 +3,7 @@
 //
 // Licensed under GNU Affero General Public License v3.0
 
-package com.kenvix.newsproject.newsproject.android.ui.base.view.base;
+package com.kenvix.walk.ui.base.view.base;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

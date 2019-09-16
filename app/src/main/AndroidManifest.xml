@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.kenvix.newsproject.newsproject.android">
+    package="com.kenvix.walk">
 
     <!-- APPLICATION PERMISSIONS BEGIN -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -9,7 +9,7 @@
     <!-- APPLICATION PERMISSIONS END   -->
 
     <application
-        android:name=".ApplicationEnvironment"
+        android:name="com.kenvix.walk.ApplicationEnvironment"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,7 +19,7 @@
         tools:ignore="GoogleAppIndexingWarning"
         android:fullBackupContent="@xml/backup_descriptor">
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name="com.kenvix.walk.ui.main.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

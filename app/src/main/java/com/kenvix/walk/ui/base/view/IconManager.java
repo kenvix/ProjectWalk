@@ -1,4 +1,4 @@
-package com.kenvix.newsproject.newsproject.android.ui.base.view;
+package com.kenvix.walk.ui.base.view;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;

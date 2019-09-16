@@ -1,11 +1,11 @@
-package com.kenvix.newsproject.newsproject.android.utils
+package com.kenvix.walk.utils
 
 
 import android.util.Log
 import android.view.View
 
-import com.kenvix.newsproject.newsproject.android.ApplicationEnvironment
-import com.kenvix.newsproject.newsproject.android.R
+import com.kenvix.walk.ApplicationEnvironment
+import com.kenvix.walk.R
 import com.kenvix.utils.android.PreprocessorName
 
 import java.lang.reflect.InvocationTargetException

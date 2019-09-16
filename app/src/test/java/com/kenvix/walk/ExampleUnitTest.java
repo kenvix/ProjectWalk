@@ -1,4 +1,4 @@
-package com.kenvix.newsproject.newsproject.android;
+package com.kenvix.walk;
 
 import org.junit.Test;
 

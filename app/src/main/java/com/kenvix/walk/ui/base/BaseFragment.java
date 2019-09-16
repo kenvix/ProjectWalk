@@ -3,7 +3,7 @@
 //
 // Licensed under GNU Affero General Public License v3.0
 
-package com.kenvix.newsproject.newsproject.android.ui.base;
+package com.kenvix.walk.ui.base;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,7 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.kenvix.newsproject.newsproject.android.utils.Invoker;
+import com.kenvix.walk.utils.Invoker;
 
 public abstract class BaseFragment extends Fragment {
 
@@ -40,7 +40,7 @@ public abstract class BaseFragment extends Fragment {
         return (BaseActivity) getActivity();
     }
 
-    protected abstract void onInitialize(View view);
+    protected abstract void onInitialize(@NonNull View view);
     protected abstract int getFragmentContentLayout();
-    protected abstract int getBaseActivityContainer();
+    public abstract int getBaseActivityContainer();
 }

@@ -1,5 +1,5 @@
 package com.kenvix.utils.android;
 
 public class Environment {
-    public static final String TargetAppPackage = "com.kenvix.newsproject.newsproject.android";
+    public static final String TargetAppPackage = "com.kenvix.walk";
 }

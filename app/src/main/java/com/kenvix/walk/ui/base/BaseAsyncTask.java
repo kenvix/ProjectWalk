@@ -1,4 +1,4 @@
-package com.kenvix.newsproject.newsproject.android.ui.base;
+package com.kenvix.walk.ui.base;
 
 import android.os.AsyncTask;
 

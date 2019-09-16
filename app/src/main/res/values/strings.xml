@@ -96,4 +96,7 @@
     <string name="summary_license">开源协议：GPLv3</string>
     <string name="title_author">作者：Kenvix</string>
     <string name="summary_author_blog">查看作者博客 (kenvix.com)</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

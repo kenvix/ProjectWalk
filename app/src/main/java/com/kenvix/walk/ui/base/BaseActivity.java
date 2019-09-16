@@ -3,7 +3,7 @@
 //
 // Licensed under GNU Affero General Public License v3.0
 
-package com.kenvix.newsproject.newsproject.android.ui.base;
+package com.kenvix.walk.ui.base;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -18,14 +18,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.kenvix.newsproject.newsproject.android.R;
-import com.kenvix.newsproject.newsproject.android.utils.Invoker;
+import com.kenvix.walk.R;
+import com.kenvix.walk.utils.Invoker;
 
 import java.util.function.Consumer;
 
 public abstract class BaseActivity extends AppCompatActivity {
     protected FragmentManager fragmentManager;
-    private BaseFragment foregroundFragment = null;
+    private BaseFragment _foregroundFragment = null;
 
     @Override
     protected final void onCreate(Bundle savedInstanceState) {
@@ -125,10 +125,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public boolean setForegroundFragment(int container, BaseFragment fragment) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        if(foregroundFragment != null)
-            transaction.hide(foregroundFragment);
+        if(_foregroundFragment != null)
+            transaction.hide(_foregroundFragment);
 
-        foregroundFragment = fragment;
+        _foregroundFragment = fragment;
 
         if(!fragment.isAdded()) {
             transaction.add(container, fragment);
@@ -140,11 +140,19 @@ public abstract class BaseActivity extends AppCompatActivity {
         return true;
     }
 
+    public boolean setForegroundFragment(BaseFragment fragment) {
+        return setForegroundFragment(fragment.getBaseActivityContainer(), fragment);
+    }
+
     protected abstract void onInitialize();
     protected abstract int getBaseLayout();
     protected abstract int getBaseContainer();
 
+//    protected int getBaseFragmentContainer() {
+//        throw new NotImplementedError("Called setForegroundFragment(fragment) but getBaseFragmentContainer() not implemented");
+//    }
+
     public BaseFragment getForegroundFragment() {
-        return foregroundFragment;
+        return _foregroundFragment;
     }
 }

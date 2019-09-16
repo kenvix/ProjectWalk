@@ -6,7 +6,7 @@ apply plugin: 'kotlin-kapt' //Kenvix Annotation Preprocessor for Kotlin Projects
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.kenvix.newsproject.newsproject.android"
+        applicationId 'com.kenvix.walk'
         minSdkVersion 24
         targetSdkVersion 28
         versionCode 1
@@ -31,6 +31,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:support-v4:28.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -42,6 +43,11 @@ dependencies {
     //for Java and Kotlin Projects
     annotationProcessor project(':utils-android')
 }
+
 repositories {
     mavenCentral()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
 }
