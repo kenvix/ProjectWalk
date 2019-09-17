@@ -19,15 +19,22 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.kenvix.utils.log.Logging;
 import com.kenvix.walk.R;
 import com.kenvix.walk.utils.InitializerUtils;
 import com.kenvix.walk.utils.Invoker;
 
 import java.util.function.Consumer;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements Logging {
     protected FragmentManager fragmentManager;
     private BaseFragment _foregroundFragment = null;
+    private String logTag;
+
+    @Override
+    public String getLogTag() {
+        return logTag == null ? (logTag = this.getClass().getSimpleName()) : logTag;
+    }
 
     @Override
     protected final void onCreate(Bundle savedInstanceState) {

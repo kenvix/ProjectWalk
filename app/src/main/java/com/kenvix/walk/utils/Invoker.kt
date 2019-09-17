@@ -1,18 +1,20 @@
 package com.kenvix.walk.utils
 
 
-import android.util.Log
 import android.view.View
-
+import com.kenvix.utils.android.PreprocessorName
+import com.kenvix.utils.log.Logging
 import com.kenvix.walk.ApplicationEnvironment
 import com.kenvix.walk.R
-import com.kenvix.utils.android.PreprocessorName
-
 import java.lang.reflect.InvocationTargetException
 
-object Invoker {
+object Invoker : Logging {
+    override fun getLogTag(): String = "Invoker"
+
     @JvmStatic
-    private val classLoader by lazy { Invoker::class.java.classLoader ?: Thread.currentThread().contextClassLoader }
+    private val classLoader by lazy {
+        Invoker::class.java.classLoader ?: Thread.currentThread().contextClassLoader
+    }
 
     @JvmStatic
     val formChecker: Class<*> by lazy { classLoader.loadClass(ApplicationEnvironment.getPackageName("generated.FormChecker")) }
@@ -27,14 +29,14 @@ object Invoker {
                     .invoke(null, targetRaw)
             true
         } catch (ex: NoSuchMethodException) {
-            Log.e("Invoker for Activity", "Invoker can't detect loader method, may cause NullPointerException: " + ex.message)
+            logger.severe("Invoker can't detect loader method, may cause NullPointerException: " + ex.message)
             false
         } catch (ex: InvocationTargetException) {
-            Log.e("Invoker for Activity", "Target Loader throws a unexpected exception: " + ex.message)
+            logger.severe("Target Loader throws a unexpected exception: " + ex.message)
             ex.printStackTrace()
             false
         } catch (ex: Exception) {
-            Log.e("Invoker for Activity", "No such view auto loader generated: " + targetRaw.javaClass.canonicalName + " : " + ex.message)
+            logger.severe("No such view auto loader generated: " + targetRaw.javaClass.canonicalName + " : " + ex.message)
             ex.printStackTrace()
             throw ex
         }
@@ -48,14 +50,14 @@ object Invoker {
                     .invoke(null, targetRaw, targetView)
             true
         } catch (ex: NoSuchMethodException) {
-            Log.e("Invoker for View", "Invoker can't detect loader method, may cause NullPointerException: " + ex.message)
+            logger.severe("Invoker can't detect loader method, may cause NullPointerException: " + ex.message)
             false
         } catch (ex: InvocationTargetException) {
-            Log.e("Invoker for View", "No such view auto loader generated: " + targetRaw.javaClass.canonicalName + " : " + ex.message)
+            logger.severe("No such view auto loader generated: " + targetRaw.javaClass.canonicalName + " : " + ex.message)
             ex.printStackTrace()
             false
         } catch (ex: Exception) {
-            Log.e("Invoker for View", "Target Loader throws a unexpected exception: " + ex.message)
+            logger.severe("Target Loader throws a unexpected exception: " + ex.message)
             ex.printStackTrace()
             false
         }
@@ -69,7 +71,7 @@ object Invoker {
                     .invoke(null, getString(R.string.error_field_required), targetRaw)
             true
         } catch (ex: Exception) {
-            Log.e("Invoker", "No such form checker generated: " + ex.message)
+            logger.severe("No such form checker generated: " + ex.message)
             ex.printStackTrace()
             false
         }

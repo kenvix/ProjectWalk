@@ -12,8 +12,7 @@ import com.kenvix.utils.log.Logging
 import com.kenvix.walk.utils.checkAndRequireRuntimePermissions
 import com.kenvix.walk.utils.checkRequiredPermissionsCallback
 
-class MainActivity : BaseActivity(), Logging {
-    override fun getLogTag(): String = "MainActivity"
+class MainActivity : BaseActivity() {
 
     companion object {
         @Suppress("MemberVisibilityCanBePrivate")
@@ -42,6 +41,7 @@ class MainActivity : BaseActivity(), Logging {
     override fun onInitialize() {
         checkAndRequireRuntimePermissions(PERMISSION_REQUEST_CODE, *REQUIRED_PERMISSIONS)
         foregroundFragment = mainFragment
+        logger.finest("MainActivity Initialized")
     }
 
     override fun getBaseLayout(): Int {

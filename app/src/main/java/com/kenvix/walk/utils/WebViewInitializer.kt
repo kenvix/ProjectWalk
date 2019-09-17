@@ -6,7 +6,7 @@ import android.webkit.WebView
 import com.kenvix.walk.ApplicationEnvironment
 
 class WebViewInitializer {
-    var extendUserAgent = "Kenvix Generic Android Client"
+    private var extendUserAgent = "Kenvix Generic Android Client"
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun initDefaultWebSettings(webView: WebView) {

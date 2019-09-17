@@ -13,9 +13,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.kenvix.utils.log.Logging;
 import com.kenvix.walk.utils.Invoker;
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements Logging {
+    private String logTag;
 
     @Nullable
     @Override
@@ -34,6 +36,11 @@ public abstract class BaseFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Invoker.invokeViewAutoLoader(this, view);
         onInitialize(view);
+    }
+
+    @Override
+    public String getLogTag() {
+        return logTag == null ? (logTag = getBaseActivity().getClass().getSimpleName() + "_" + this.getClass().getSimpleName()) : logTag;
     }
 
     public BaseActivity getBaseActivity() {

@@ -1,13 +1,13 @@
 package com.kenvix.walk.utils;
 
 import android.util.Log;
-
 import com.kenvix.utils.log.LogSettings;
-
 import java.util.logging.*;
 
 /**
- * Make JUL work on Android.
+ * <p>Java Logger handler for Android.</p>
+ * If you want to use Kenvix Logger in android project, you need to use this handler.
+ * Use it by calling {@link AndroidLoggingHandler#applyToKenvixLogger()}
  */
 public class AndroidLoggingHandler extends Handler {
 
