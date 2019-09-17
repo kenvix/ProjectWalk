@@ -5,8 +5,11 @@ import android.app.Application
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.support.annotation.NonNull
+import com.kenvix.utils.log.Logging
+import com.kenvix.walk.utils.AndroidLoggingHandler
 
-class ApplicationEnvironment : Application() {
+class ApplicationEnvironment : Application(), Logging {
+    override fun getLogTag(): String = "ApplicationEnvironment"
 
     companion object Utils {
         @SuppressLint("StaticFieldLeak")
@@ -53,5 +56,9 @@ class ApplicationEnvironment : Application() {
         super.onCreate()
         appContext = applicationContext
         rootContext = baseContext
+
+        AndroidLoggingHandler.applyToKenvixLogger()
+
+        logger.finer("Application Initialized")
     }
 }

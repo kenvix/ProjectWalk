@@ -4,7 +4,7 @@
     <string name="error_invalid_number_less_or_equal">数字不合法，应小于或等于 %d</string>
     <string name="error_invalid_number_more_or_equal">数字不合法，应大于或等于 %d</string>
     <!-- Strings related to Server List -->
-    <string name="app_name">MineCraft Rcon 管理工具</string>
+    <string name="app_name">Project Walk</string>
     <string name="title_main">Rcon 服务器列表</string>
     <string name="no_server">未添加任何 MineCraft 服务器</string>
     <string name="action_settings">设置</string>
@@ -99,4 +99,5 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="required_permission_denied">此功能必须获得以下权限，请允许或打开设置手动授予。若取消，则此功能将不能使用: \n%s</string>
 </resources>

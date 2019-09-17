@@ -8,6 +8,7 @@ package com.kenvix.walk.ui.base;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.kenvix.walk.R;
+import com.kenvix.walk.utils.InitializerUtils;
 import com.kenvix.walk.utils.Invoker;
 
 import java.util.function.Consumer;
@@ -143,6 +145,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     public boolean setForegroundFragment(BaseFragment fragment) {
         return setForegroundFragment(fragment.getBaseActivityContainer(), fragment);
     }
+
 
     protected abstract void onInitialize();
     protected abstract int getBaseLayout();
