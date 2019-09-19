@@ -11,4 +11,8 @@ import com.kenvix.walk.services.BaseService
 
 abstract class ServiceBinder<T: BaseService> : Binder() {
     abstract val service: T
+    val isServiceSuccessfullyInitialized
+        get() = service.initException == null
+    val serviceInitException
+        get() = service.initException
 }

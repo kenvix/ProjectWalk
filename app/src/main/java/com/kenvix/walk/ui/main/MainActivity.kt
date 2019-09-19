@@ -3,8 +3,8 @@ package com.kenvix.walk.ui.main
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
-import android.content.ServiceConnection
 import android.support.design.widget.BottomNavigationView
+import android.widget.TextView
 
 import com.kenvix.walk.R
 import com.kenvix.walk.ui.base.BaseActivity
@@ -15,9 +15,11 @@ import com.kenvix.walk.utils.*
 class MainActivity : BaseActivity() {
     @ViewAutoLoad
     lateinit var mainNavView: BottomNavigationView
+    @ViewAutoLoad
+    lateinit var mainStepCount: TextView
 
     private lateinit var mainFragment: MainFragment
-    private lateinit var serviceConnection: ServiceConnection
+    private lateinit var serviceConnection: WalkCounterServiceConnection
 
     override fun onInitialize() {
         checkAndRequireRuntimePermissions(PERMISSION_REQUEST_CODE, *REQUIRED_PERMISSIONS)
@@ -26,22 +28,26 @@ class MainActivity : BaseActivity() {
 
         serviceConnection = WalkCounterServiceConnection(this)
         logger.finest("MainActivity Initialized")
+
+        startWalkCounter()
+        bindWalkCounter()
     }
 
-    override fun getBaseLayout(): Int {
-        return R.layout.activity_main
-    }
-
-    override fun getBaseContainer(): Int {
-        return R.id.main_container
-    }
+    override fun getBaseLayout(): Int = R.layout.activity_main
+    override fun getBaseContainer(): Int = R.id.main_container
 
     fun startWalkCounter() {
-        startServiceInThreadPool(WalkCounterService::class.java)
+        startServiceInThreadPool(WalkCounterService::class.java) {
+            alertDialog(getString(R.string.walk_sensor_not_found))
+        }
     }
 
     fun bindWalkCounter() {
         bindService(WalkCounterService::class.java, serviceConnection)
+    }
+
+    fun unbindWalkCounter() {
+        unbindService(serviceConnection)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {

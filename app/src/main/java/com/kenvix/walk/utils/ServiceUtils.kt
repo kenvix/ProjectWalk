@@ -6,25 +6,31 @@ import android.content.ContextWrapper
 import android.content.Intent
 import android.content.ServiceConnection
 import com.kenvix.walk.ApplicationEnvironment
+import java.lang.Exception
 
 fun ContextWrapper.startService(serviceClass: Class<*>) {
     val intent = Intent(this, serviceClass)
     this.startService(intent)
 }
 
-fun ContextWrapper.startServiceInThreadPool(serviceClass: Class<*>) {
+@JvmOverloads
+fun ContextWrapper.startServiceInThreadPool(serviceClass: Class<*>, onException: (exception: Exception) -> Unit = { throw it }) {
     ApplicationEnvironment.cachedThreadPool.execute {
-        startService(serviceClass)
+        try {
+            startService(serviceClass)
+        } catch (e: Exception) {
+            onException(e)
+        }
     }
 }
 
-fun ContextWrapper.stopService(serviceClass: Class<*>) {
+fun ContextWrapper.stopService(serviceClass: Class<*>): Boolean {
     val intent = Intent(this, serviceClass)
-    this.stopService(intent)
+    return this.stopService(intent)
 }
 
 @JvmOverloads
-fun ContextWrapper.bindService(serviceClass: Class<*>, connection: ServiceConnection, flags: Int = BIND_AUTO_CREATE) {
+fun ContextWrapper.bindService(serviceClass: Class<*>, connection: ServiceConnection, flags: Int = BIND_AUTO_CREATE): Boolean {
     val intent = Intent(this, serviceClass)
-    bindService(intent, connection, flags)
+    return bindService(intent, connection, flags)
 }

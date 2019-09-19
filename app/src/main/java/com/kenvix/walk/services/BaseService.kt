@@ -13,14 +13,22 @@ import com.kenvix.utils.log.Logging
 abstract class BaseService : Service(), Logging {
     private lateinit var logTag: String
 
+    var initException: Exception? = null
+
     override fun getLogTag(): String = logTag
 
-    override fun onCreate() {
+    final override fun onCreate() {
         super.onCreate()
-        logTag = this.javaClass.simpleName
-        onInitialize()
 
-        logger.finest("Created service")
+        try {
+            logTag = this.javaClass.simpleName
+            onInitialize()
+
+            logger.finest("Created service")
+        } catch (e: Exception) {
+            initException = e
+            stopSelf()
+        }
     }
 
     protected abstract fun onInitialize()
