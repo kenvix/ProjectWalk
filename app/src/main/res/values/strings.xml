@@ -103,4 +103,8 @@
     <string name="sensor_failed">无法启动所需的传感器</string>
     <string name="walk_count">步数</string>
     <string name="required_permission_denied">此功能必须获得以下权限，请允许或打开设置手动授予。若取消，则此功能将不能使用: \n%s</string>
+    <string name="prompt_no_response">若长时间没有响应，请返回并重试</string>
+    <string name="prompt_waiting_camera">正在等待相机拍照</string>
+    <string name="prompt_waiting_file">正在等待文件选取</string>
+    <string name="prompt_camera_output">Camera Output</string>
 </resources>

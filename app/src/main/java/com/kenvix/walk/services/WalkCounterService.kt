@@ -8,8 +8,10 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.IBinder
 import android.os.SystemClock
+import com.kenvix.walk.ApplicationEnvironment
 import com.kenvix.walk.preferences.WalkCounterPreferences
 import com.kenvix.walk.utils.ServiceBinder
+import java.util.*
 
 
 class WalkCounterService : BaseService() {
@@ -45,6 +47,7 @@ class WalkCounterService : BaseService() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         logger.finest("Walk counter started.")
+        scheduleSaveWalkCounterPreference()
 
         return super.onStartCommand(intent, flags, startId)
     }
@@ -65,6 +68,21 @@ class WalkCounterService : BaseService() {
             if (this::counterSensor.isInitialized)
                 sensorManager.unregisterListener(counterEventListener, counterSensor)
         }
+    }
+
+    private fun scheduleSaveWalkCounterPreference() {
+        ApplicationEnvironment.timer.schedule(object : TimerTask() {
+            override fun run() {
+                ApplicationEnvironment.cachedThreadPool.execute {
+                    saveWalkCounterPreference()
+                    scheduledExecutionTime()
+                }
+            }
+        }, PREFERENCE_COMMIT_FREQUENT)
+    }
+
+    fun saveWalkCounterPreference() {
+        WalkCounterPreferences.commit()
     }
 
     private inner class CounterEventListener : SensorEventListener {
@@ -114,5 +132,9 @@ class WalkCounterService : BaseService() {
             get() = service.initWalkStep
 
         override val service = this@WalkCounterService
+    }
+
+    companion object {
+        private const val PREFERENCE_COMMIT_FREQUENT = 10000L
     }
 }

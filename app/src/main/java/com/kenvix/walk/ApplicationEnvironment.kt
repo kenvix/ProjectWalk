@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable
 import android.support.annotation.NonNull
 import com.kenvix.utils.log.Logging
 import com.kenvix.walk.utils.AndroidLoggingHandler
+import java.util.*
 import java.util.concurrent.SynchronousQueue
 import java.util.concurrent.ThreadPoolExecutor
 import java.util.concurrent.TimeUnit
@@ -56,6 +57,10 @@ class ApplicationEnvironment : Application(), Logging {
             private set
 
         @JvmStatic
+        lateinit var timer: Timer
+            private set
+
+        @JvmStatic
         fun getPackageName(name: String) = BuildConfig.APPLICATION_ID + "." + name
     }
 
@@ -70,5 +75,6 @@ class ApplicationEnvironment : Application(), Logging {
 
         cachedThreadPool = ThreadPoolExecutor(1, 20,
                 60L, TimeUnit.SECONDS, SynchronousQueue<Runnable>())
+        timer = Timer()
     }
 }

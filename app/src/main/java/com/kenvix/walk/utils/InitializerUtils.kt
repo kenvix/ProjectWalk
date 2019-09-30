@@ -2,17 +2,19 @@
 
 package com.kenvix.walk.utils
 
-import android.Manifest
-import android.app.Activity
-import android.app.Application
+import android.content.ContextWrapper
 import android.content.pm.PackageManager
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
-import com.kenvix.walk.ApplicationEnvironment
 import com.kenvix.walk.R
 import com.kenvix.walk.ui.base.BaseActivity
-import com.kenvix.walk.ui.main.MainActivity
+import java.io.File
+
+//fun BaseActivity.
+
+fun ContextWrapper.createTempFile(prefix: String? = "temp_", suffix: String? = null): File {
+    return File.createTempFile(prefix, suffix, cacheDir)
+}
 
 fun BaseActivity.checkAndRequireRuntimePermissions(code: Int, vararg permissions: String) {
     val wantedPermissions = mutableListOf<String>()
@@ -22,7 +24,10 @@ fun BaseActivity.checkAndRequireRuntimePermissions(code: Int, vararg permissions
         wantedPermissions.add(permission)
     }
 
-    ActivityCompat.requestPermissions(this, permissions, code)
+    if (wantedPermissions.isEmpty())
+        this.onAllPermissionsGranted(code)
+    else
+        ActivityCompat.requestPermissions(this, permissions, code)
 }
 
 @JvmOverloads
@@ -43,12 +48,14 @@ fun BaseActivity.checkRequiredPermissionsCallback(wantedCode: Int,
         }
 
         if (nextTryPermissions.isNotEmpty()) {
-            confirmDialog(getString(R.string.required_permission_denied, nextTryPermissions.joinToString("\n"))) {
+            showConfirmDialog(getString(R.string.required_permission_denied, nextTryPermissions.joinToString("\n"))) {
                 if (it)
                     checkAndRequireRuntimePermissions(wantedCode, *nextTryPermissions.toTypedArray())
                 else
                     onRefused()
             }
+        } else {
+            onAllPermissionsGranted(requestCode)
         }
     }
 }

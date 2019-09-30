@@ -23,12 +23,12 @@ internal class WalkCounterServiceConnection(val activity: MainActivity) : Servic
 
         if (!service.isServiceSuccessfullyInitialized) {
             if (service.serviceInitException is IllegalStateException) {
-                activity.alertDialog(activity.getString(R.string.walk_sensor_not_found)) {
+                activity.showAlertDialog(activity.getString(R.string.walk_sensor_not_found)) {
                     activity.unbindWalkCounter()
                     activity.finish()
                 }
             } else {
-                activity.alertDialog(activity.getString(R.string.sensor_failed)
+                activity.showAlertDialog(activity.getString(R.string.sensor_failed)
                         + "\n" + service.serviceInitException!!.toString()) {
                     activity.unbindWalkCounter()
                     activity.finish()
