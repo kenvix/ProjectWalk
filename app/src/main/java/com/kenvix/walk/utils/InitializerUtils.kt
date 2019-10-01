@@ -12,6 +12,8 @@ import java.io.File
 
 //fun BaseActivity.
 
+val phoneCpuArchiture = System.getProperty("os.arch")
+
 fun ContextWrapper.createTempFile(prefix: String? = "temp_", suffix: String? = null): File {
     return File.createTempFile(prefix, suffix, cacheDir)
 }

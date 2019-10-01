@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable
 import android.support.annotation.NonNull
 import com.kenvix.utils.log.Logging
 import com.kenvix.walk.utils.AndroidLoggingHandler
+import java.lang.annotation.Native
 import java.util.*
 import java.util.concurrent.SynchronousQueue
 import java.util.concurrent.ThreadPoolExecutor
@@ -64,12 +65,19 @@ class ApplicationEnvironment : Application(), Logging {
         fun getPackageName(name: String) = BuildConfig.APPLICATION_ID + "." + name
     }
 
+    private fun checkAndConfigureRuntime() {
+
+    }
+
+
     override fun onCreate() {
         super.onCreate()
         appContext = applicationContext
         rootContext = baseContext
 
         AndroidLoggingHandler.applyToKenvixLogger()
+
+        JniMain.onApplicationStart()
 
         logger.finer("Application Initialized")
 

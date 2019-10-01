@@ -12,6 +12,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            moduleName "main-lib"
+            ldLibs "android", "log"
+        }
     }
     buildTypes {
         release {
@@ -23,10 +28,16 @@ android {
         targetCompatibility = '1.8'
         sourceCompatibility = '1.8'
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
     buildToolsVersion = '28.0.3'
+    externalNativeBuild {
+        cmake {
+            path file('CMakeLists.txt')
+        }
+    }
 }
 
 dependencies {
@@ -40,7 +51,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+
     implementation project(path: ':utils-android')
+
     //Kenvix Annotation Preprocessor
     //for Kotlin Projects
     kapt project(':utils-android')
