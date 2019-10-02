@@ -1,4 +1,4 @@
-@file:JvmName("InitializerUtils")
+ @file:JvmName("InitializerUtils")
 
 package com.kenvix.walk.utils
 

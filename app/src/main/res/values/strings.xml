@@ -97,6 +97,15 @@
     <string name="title_author">作者：Kenvix</string>
     <string name="summary_author_blog">查看作者博客 (kenvix.com)</string>
 
+    <string name="login_register_hint">注册</string>
+    <string name="login_input_username_hint">用户名</string>
+    <string name="hint_password">密码</string>
+    <string name="login">登录</string>
+    <string name="login_register_hint">注册</string>
+    <string name="login_hold_hint">自动登录</string>
+    <string name="login_forget_hint">忘记密码？</string>
+    <string name="login_other_hint">其他方式登录</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="walk_sensor_not_found">此设备缺少所需的步数传感器，因此无法使用此应用</string>
