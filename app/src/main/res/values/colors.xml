@@ -5,5 +5,6 @@
     <color name="colorTitle">#FFF</color>
     <color name="colorAccent">#9D89D1</color>
     <color name="terminalText">#000</color>
-
+    <color name="bg_press">#ebebeb</color>
+    <color name="white">#FFFFFF</color>
 </resources>
