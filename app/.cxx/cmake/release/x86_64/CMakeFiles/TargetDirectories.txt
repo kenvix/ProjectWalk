@@ -1,3 +1,0 @@
-C:/Users/Charles/Desktop/ProjectWalk/app/.cxx/cmake/release/x86_64/CMakeFiles/main-lib.dir
-C:/Users/Charles/Desktop/ProjectWalk/app/.cxx/cmake/release/x86_64/CMakeFiles/edit_cache.dir
-C:/Users/Charles/Desktop/ProjectWalk/app/.cxx/cmake/release/x86_64/CMakeFiles/rebuild_cache.dir

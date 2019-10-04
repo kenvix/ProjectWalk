@@ -1,3 +1,0 @@
-C:/Users/Charles/Desktop/ProjectWalk/app/.cxx/cmake/release/arm64-v8a/CMakeFiles/main-lib.dir
-C:/Users/Charles/Desktop/ProjectWalk/app/.cxx/cmake/release/arm64-v8a/CMakeFiles/edit_cache.dir
-C:/Users/Charles/Desktop/ProjectWalk/app/.cxx/cmake/release/arm64-v8a/CMakeFiles/rebuild_cache.dir
