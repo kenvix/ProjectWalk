@@ -11,7 +11,7 @@
         android:id="@+id/login_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@mipmap/login_bg"
+        android:background="@mipmap/login_bg2"
         android:orientation="vertical"
         android:paddingBottom="16dp">
 

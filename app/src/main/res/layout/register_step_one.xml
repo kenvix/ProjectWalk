@@ -175,11 +175,11 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="24dp"
-        android:background="@drawable/bg_login_submit_lock"
+        android:background="@drawable/login_submit_lock"
         android:elevation="0dp"
         android:outlineProvider="none"
         android:text="@string/login_register_hint"
-        android:textColor="@color/account_lock_font_color"
+        android:textColor="#FFFFFF"
         android:textSize="@dimen/font_18"
         android:translationZ="0dp"
         tools:targetApi="lollipop" />

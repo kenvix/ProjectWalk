@@ -70,6 +70,7 @@ dependencies {
     kapt project(':utils-android')
     //for Java and Kotlin Projects
     annotationProcessor project(':utils-android')
+    implementation project(path: ':utils-android')
 }
 
 repositories {

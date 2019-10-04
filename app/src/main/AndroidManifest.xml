@@ -35,7 +35,7 @@
         </activity>
         <meta-data
             android:name="com.google.android.actions"
-            android:resource="@xml/bg_login_input_ok" />
+            android:resource="@drawable/bg_login_input_ok" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
