@@ -63,7 +63,11 @@ class CameraCapturerActivity : BaseActivity() {
                 fileUri = startCameraActivity()
             }
             From.Album -> {
-                showProgressDialog(getString(R.string.prompt_waiting_file))
+                loadingAlertDialog = showProgressDialog(getString(R.string.prompt_no_response),
+                        true, getString(R.string.prompt_waiting_file)) {
+                    if (!it) finish()
+                }
+
 
             }
         }
