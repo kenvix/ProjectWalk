@@ -5,11 +5,11 @@ import android.webkit.WebSettings
 import android.webkit.WebView
 import com.kenvix.walk.ApplicationEnvironment
 
-class WebViewInitializer {
+class WebViewInitializer(private val webView: WebView) {
     private var extendUserAgent = "Kenvix Generic Android Client"
 
     @SuppressLint("SetJavaScriptEnabled")
-    private fun initDefaultWebSettings(webView: WebView) {
+    public fun initDefaultWebSettings() {
         val webSettings = webView.settings
 
         webSettings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
@@ -37,7 +37,7 @@ class WebViewInitializer {
         webSettings.loadsImagesAutomatically = true
     }
 
-    private fun disableZoom(webView: WebView) {
+    public fun disableZoom() {
         val webSettings = webView.settings
 
         //禁用放缩

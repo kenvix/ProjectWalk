@@ -115,8 +115,6 @@
     <string name="summary_author_blog">查看作者博客 (kenvix.com)</string>
 
 
-
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="walk_sensor_not_found">此设备缺少所需的步数传感器，因此无法使用此应用</string>
@@ -127,4 +125,7 @@
     <string name="prompt_waiting_camera">正在等待相机拍照</string>
     <string name="prompt_waiting_file">正在等待文件选取</string>
     <string name="prompt_camera_output">Camera Output</string>
+    <string name="title_forum">社区</string>
+    <string name="title_me">我</string>
+    <string name="title_start_recognition">开始识别</string>
 </resources>

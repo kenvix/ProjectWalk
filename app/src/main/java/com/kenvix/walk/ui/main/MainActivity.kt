@@ -5,13 +5,16 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.view.KeyEvent
+import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
 
 import com.kenvix.walk.R
 import com.kenvix.walk.ui.base.BaseActivity
 import com.kenvix.utils.android.annotation.ViewAutoLoad
+import com.kenvix.utils.lang.toUnit
 import com.kenvix.walk.services.WalkCounterService
-import com.kenvix.walk.ui.camera.CameraCapturerActivity
 import com.kenvix.walk.utils.*
 
 class MainActivity : BaseActivity() {
@@ -21,11 +24,14 @@ class MainActivity : BaseActivity() {
     lateinit var mainStepCount: TextView
 
     private lateinit var mainFragment: MainFragment
+    private lateinit var forumFragment: ForumFragment
     private lateinit var serviceConnection: WalkCounterServiceConnection
+    private var backClickTime: Long = 0
 
     override fun onInitialize(savedInstanceState: Bundle?) {
         checkAndRequireRuntimePermissions(PERMISSION_REQUEST_CODE, *REQUIRED_PERMISSIONS)
         mainFragment = MainFragment()
+        forumFragment = ForumFragment()
         foregroundFragment = mainFragment
 
         serviceConnection = WalkCounterServiceConnection(this)
@@ -33,7 +39,30 @@ class MainActivity : BaseActivity() {
 
         //startWalkCounter()
         //bindWalkCounter()
-        CameraCapturerActivity.startActivity(this, ACTIVITY_REQUEST_CODE, CameraCapturerActivity.From.Camera)
+        //CameraCapturerActivity.startActivity(this, ACTIVITY_REQUEST_CODE, CameraCapturerActivity.From.Camera)
+        //ForumFragment.startActivity(this, ACTIVITY_REQUEST_CODE)
+        mainNavView.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.main_navigation_me -> foregroundFragment = mainFragment
+                R.id.main_navigation_forum -> foregroundFragment = forumFragment
+            }
+            true
+        }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (foregroundFragment == forumFragment) {
+            if (forumFragment.onKeyDown(keyCode, event))
+                return true
+        }
+
+        if (System.currentTimeMillis() - backClickTime > BACK_WAIT_TIME) {
+            showSnackbar("再按一次返回键退出程序")
+            backClickTime = System.currentTimeMillis()
+            return true
+        }
+
+        return super.onKeyDown(keyCode, event)
     }
 
     override fun getBaseLayout(): Int = R.layout.activity_main
@@ -62,6 +91,7 @@ class MainActivity : BaseActivity() {
         @Suppress("MemberVisibilityCanBePrivate")
         const val ACTIVITY_REQUEST_CODE = 0xa00
         const val PERMISSION_REQUEST_CODE = 0xb00
+        const val BACK_WAIT_TIME = 3000
 
         @JvmStatic
         val REQUIRED_PERMISSIONS = arrayOf(
