@@ -129,4 +129,5 @@
     <string name="title_me">我</string>
     <string name="title_start_recognition">开始识别</string>
     <string name="prompt_back_again">再按一次返回键退出程序</string>
+    <string name="title_my_favorite">我的收藏</string>
 </resources>

@@ -9,8 +9,6 @@ import com.kenvix.utils.android.annotation.ViewAutoLoad
 
 
 internal class MainFragment : BaseFragment() {
-    @ViewAutoLoad
-    lateinit var mainWebview: WebView
 
     override fun onInitialize(view: View) {
 

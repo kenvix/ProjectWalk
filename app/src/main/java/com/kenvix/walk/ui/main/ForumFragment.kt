@@ -10,8 +10,8 @@ import com.kenvix.walk.ui.base.BaseFragment
 import com.kenvix.walk.utils.WebViewInitializer
 
 class ForumFragment : BaseFragment() {
-    @ViewAutoLoad
-    lateinit var forumWebView: WebView
+    @ViewAutoLoad lateinit var forumWebView: WebView
+
     private lateinit var webViewInitializer: WebViewInitializer
 
     override fun onInitialize(view: View) {

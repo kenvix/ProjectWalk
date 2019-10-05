@@ -18,10 +18,8 @@ import com.kenvix.walk.services.WalkCounterService
 import com.kenvix.walk.utils.*
 
 class MainActivity : BaseActivity() {
-    @ViewAutoLoad
-    lateinit var mainNavView: BottomNavigationView
-    @ViewAutoLoad
-    lateinit var mainStepCount: TextView
+    @ViewAutoLoad lateinit var mainNavView: BottomNavigationView
+    @ViewAutoLoad lateinit var mainStepCount: TextView
 
     private lateinit var mainFragment: MainFragment
     private lateinit var forumFragment: ForumFragment
