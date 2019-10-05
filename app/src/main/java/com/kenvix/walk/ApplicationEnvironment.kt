@@ -7,6 +7,8 @@ import android.graphics.drawable.Drawable
 import android.support.annotation.NonNull
 import com.kenvix.utils.log.Logging
 import com.kenvix.walk.utils.AndroidLoggingHandler
+import okhttp3.Cache
+import okhttp3.OkHttpClient
 import java.lang.annotation.Native
 import java.util.*
 import java.util.concurrent.SynchronousQueue
@@ -28,6 +30,26 @@ class ApplicationEnvironment : Application(), Logging {
         @JvmStatic
         lateinit var rootContext: Context
             private set
+
+        @SuppressLint("StaticFieldLeak")
+        @NonNull
+        @JvmStatic
+        lateinit var instance: ApplicationEnvironment
+            private set
+
+        val okHttpClient: OkHttpClient by lazy {
+            val okHttpClientBuilder = OkHttpClient.Builder().
+                    connectTimeout(ApplicationProperties.OkHttpClientTimeout, TimeUnit.SECONDS).
+                    followRedirects(true)
+
+            val cacheDir = appContext.cacheDir.resolve("okhttp")
+
+            if (cacheDir.exists())
+                cacheDir.mkdirs()
+
+            okHttpClientBuilder.cache(Cache(cacheDir, ApplicationProperties.OkHttpClientCacheSize))
+            okHttpClientBuilder.build()
+        }
 
         @JvmStatic
         fun getViewString(id: Int, vararg formatArgs: Any): String {
@@ -74,9 +96,9 @@ class ApplicationEnvironment : Application(), Logging {
         super.onCreate()
         appContext = applicationContext
         rootContext = baseContext
+        instance = this
 
         AndroidLoggingHandler.applyToKenvixLogger()
-
         JniMain.onApplicationStart()
 
         logger.finer("Application Initialized")

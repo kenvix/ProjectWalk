@@ -1,16 +1,52 @@
 package com.kenvix.walk.ui.base;
 
 import android.os.AsyncTask;
+import android.support.annotation.Nullable;
 
-public abstract class BaseAsyncTask<T, U, X> extends AsyncTask<T, U, X> {
-    private RuntimeException exception = null;
+import com.kenvix.utils.log.LogUtilsKt;
+import com.kenvix.utils.log.Logging;
 
-    public RuntimeException getException() {
+public abstract class BaseAsyncTask<T, U, X> extends AsyncTask<T, U, X> implements Logging {
+    private Exception exception = null;
+    private String taskName;
+
+    /**
+     * Run task default implement
+     * @param ts args
+     * @return X if success, null if failed
+     */
+    @Override
+    @SafeVarargs
+    protected final @Nullable X doInBackground(T... ts) {
+        try {
+            return doTask(ts);
+        } catch (Exception e) {
+            setException(e);
+            onException(e);
+            return null;
+        }
+    }
+
+    protected abstract X doTask(T... ts) throws Exception;
+    protected void onException(Exception exception) {
+        LogUtilsKt.warning(getLogger(), exception, "Task failed");
+    }
+
+    public Exception getException() {
         return exception;
     }
 
-    public void setException(RuntimeException exception) {
+    protected void setException(Exception exception) {
         this.exception = exception;
+    }
+
+    @Override
+    public String getLogTag() {
+        return taskName == null ? taskName = this.getClass().getSimpleName() : taskName;
+    }
+
+    public boolean isExceptionThrown() {
+        return exception != null;
     }
 }
 
