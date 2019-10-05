@@ -16,22 +16,10 @@ class ForumFragment : BaseFragment() {
 
     override fun onInitialize(view: View) {
         webViewInitializer = WebViewInitializer(forumWebView)
-
-        webViewInitializer.enableFirstLoadAnime()
-        webViewInitializer.initDefaultWebSettings()
-        webViewInitializer.loadUrl(ApplicationProperties.ForumUrl)
-        webViewInitializer.disableZoom()
+        webViewInitializer.setupWithCommonConfig(ApplicationProperties.ForumUrl)
     }
 
-    fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_BACK && forumWebView.canGoBack()) {
-            forumWebView.goBack()
-            return true
-        }
-
-        return false
-    }
-
+    fun onKeyDown(keyCode: Int, event: KeyEvent?) = webViewInitializer.onKeyDownCallback(keyCode, event)
     override fun getFragmentContentLayout(): Int = R.layout.fragment_forum
     override fun getBaseActivityContainer(): Int = R.id.main_fragment_container
 }

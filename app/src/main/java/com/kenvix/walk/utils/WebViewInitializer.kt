@@ -1,9 +1,11 @@
 package com.kenvix.walk.utils
 
 import android.annotation.SuppressLint
+import android.view.KeyEvent
 import android.webkit.WebSettings
 import android.webkit.WebView
 import com.kenvix.walk.ApplicationEnvironment
+import com.kenvix.walk.ApplicationProperties
 
 class WebViewInitializer(private val webView: WebView) {
     private var extendUserAgent = "Kenvix Generic Android Client"
@@ -53,5 +55,24 @@ class WebViewInitializer(private val webView: WebView) {
 
     fun loadUrl(url: String) {
         webView.loadUrl(url)
+    }
+
+    @JvmOverloads
+    fun setupWithCommonConfig(url: String? = null) {
+        enableFirstLoadAnime()
+        initDefaultWebSettings()
+        disableZoom()
+
+        if (url != null)
+            loadUrl(ApplicationProperties.ForumUrl)
+    }
+
+    fun onKeyDownCallback(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
+            webView.goBack()
+            return true
+        }
+
+        return false
     }
 }
