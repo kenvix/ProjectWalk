@@ -9,7 +9,7 @@ class WebViewInitializer(private val webView: WebView) {
     private var extendUserAgent = "Kenvix Generic Android Client"
 
     @SuppressLint("SetJavaScriptEnabled")
-    public fun initDefaultWebSettings() {
+    fun initDefaultWebSettings() {
         val webSettings = webView.settings
 
         webSettings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
@@ -37,7 +37,7 @@ class WebViewInitializer(private val webView: WebView) {
         webSettings.loadsImagesAutomatically = true
     }
 
-    public fun disableZoom() {
+    fun disableZoom() {
         val webSettings = webView.settings
 
         //禁用放缩
@@ -45,5 +45,13 @@ class WebViewInitializer(private val webView: WebView) {
         webSettings.builtInZoomControls = false
         //禁用文字缩放
         webSettings.textZoom = 100
+    }
+
+    fun enableFirstLoadAnime() {
+        //TODO: Loading Anime
+    }
+
+    fun loadUrl(url: String) {
+        webView.loadUrl(url)
     }
 }

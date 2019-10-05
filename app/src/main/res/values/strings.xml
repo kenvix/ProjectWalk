@@ -128,4 +128,5 @@
     <string name="title_forum">社区</string>
     <string name="title_me">我</string>
     <string name="title_start_recognition">开始识别</string>
+    <string name="prompt_back_again">再按一次返回键退出程序</string>
 </resources>

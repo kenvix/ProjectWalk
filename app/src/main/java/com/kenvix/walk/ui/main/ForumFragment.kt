@@ -15,10 +15,11 @@ class ForumFragment : BaseFragment() {
     private lateinit var webViewInitializer: WebViewInitializer
 
     override fun onInitialize(view: View) {
-        forumWebView.loadUrl(ApplicationProperties.ForumUrl)
-
         webViewInitializer = WebViewInitializer(forumWebView)
+
+        webViewInitializer.enableFirstLoadAnime()
         webViewInitializer.initDefaultWebSettings()
+        webViewInitializer.loadUrl(ApplicationProperties.ForumUrl)
         webViewInitializer.disableZoom()
     }
 

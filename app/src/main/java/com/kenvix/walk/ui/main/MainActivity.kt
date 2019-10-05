@@ -57,7 +57,7 @@ class MainActivity : BaseActivity() {
         }
 
         if (System.currentTimeMillis() - backClickTime > BACK_WAIT_TIME) {
-            showSnackbar("再按一次返回键退出程序")
+            showSnackbar(getString(R.string.prompt_back_again))
             backClickTime = System.currentTimeMillis()
             return true
         }
@@ -91,7 +91,7 @@ class MainActivity : BaseActivity() {
         @Suppress("MemberVisibilityCanBePrivate")
         const val ACTIVITY_REQUEST_CODE = 0xa00
         const val PERMISSION_REQUEST_CODE = 0xb00
-        const val BACK_WAIT_TIME = 3000
+        const val BACK_WAIT_TIME = 2000
 
         @JvmStatic
         val REQUIRED_PERMISSIONS = arrayOf(
