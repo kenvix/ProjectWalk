@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.support.design.widget.BottomNavigationView
 import android.view.KeyEvent
 import android.view.MenuItem
@@ -26,6 +27,10 @@ class MainActivity : BaseActivity() {
     private lateinit var serviceConnection: WalkCounterServiceConnection
     private var backClickTime: Long = 0
 
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
+
+    }
     override fun onInitialize(savedInstanceState: Bundle?) {
         checkAndRequireRuntimePermissions(PERMISSION_REQUEST_CODE, *REQUIRED_PERMISSIONS)
         mainFragment = MainFragment()

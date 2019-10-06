@@ -3,7 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt' //Kenvix Annotation Preprocessor for Kotlin Projects
 
-def pathToOpenCv = "E:\\RT\\OpenCV3-android-sdk"
 
 android {
     compileSdkVersion 28
@@ -36,16 +35,15 @@ android {
     }
     buildToolsVersion = '28.0.3'
 
-    externalNativeBuild {
+   /* externalNativeBuild {
         cmake {
             path file('CMakeLists.txt')
         }
-    }
+    }*/
 
     sourceSets {
         main {
             java.srcDirs = ['src/main/java']
-            jniLibs.srcDirs "${pathToOpenCv}/sdk/native/libs"
         }
     }
 }
