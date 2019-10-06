@@ -64,7 +64,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun getBaseLayout(): Int = R.layout.activity_main
-    override fun getBaseContainer(): Int = R.id.main_container
+    override fun getBaseContainer(): Int = R.id.main_fragment_container
 
     fun startWalkCounter() {
         startServiceInThreadPool(WalkCounterService::class.java) {
