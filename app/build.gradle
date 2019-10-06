@@ -63,7 +63,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-
+    implementation 'com.github.forvv231:EasyNavigation:1.0.3'
 
     implementation project(path: ':utils-android')
 
