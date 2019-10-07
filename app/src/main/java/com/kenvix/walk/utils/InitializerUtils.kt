@@ -14,10 +14,18 @@ import java.io.File
 
 val phoneCpuArchiture = System.getProperty("os.arch")
 
+ /**
+  * 创建临时文件
+  */
 fun ContextWrapper.createTempFile(prefix: String? = "temp_", suffix: String? = null): File {
     return File.createTempFile(prefix, suffix, cacheDir)
 }
 
+ /**
+  * 检查并尝试获取运行时权限
+  * @param code Request code
+  *
+  */
 fun BaseActivity.checkAndRequireRuntimePermissions(code: Int, vararg permissions: String) {
     val wantedPermissions = mutableListOf<String>()
 
@@ -32,7 +40,10 @@ fun BaseActivity.checkAndRequireRuntimePermissions(code: Int, vararg permissions
         ActivityCompat.requestPermissions(this, permissions, code)
 }
 
-@JvmOverloads
+ /**
+  * 检查结果回调
+  */
+ @JvmOverloads
 fun BaseActivity.checkRequiredPermissionsCallback(wantedCode: Int,
                                                   wantedPermissions: Array<String>,
                                                   requestCode: Int,

@@ -39,6 +39,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Logging 
     @Override
     protected final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getLogger().finest("Start activity");
         setContentView(getBaseLayout());
         fragmentManager = getSupportFragmentManager();
         Invoker.invokeViewAutoLoader(this);
@@ -89,7 +90,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Logging 
     }
 
     public AlertDialog showAlertDialog(String text, @Nullable String title, @Nullable Consumer<Boolean> callback) {
-        return getAlertBuilder(text, title, callback).show();
+            return getAlertBuilder(text, title, callback).show();
     }
 
     public AlertDialog showAlertDialog(String text, @Nullable Consumer<Boolean> callback) {
@@ -159,6 +160,12 @@ public abstract class BaseActivity extends AppCompatActivity implements Logging 
         return PreferenceManager.getDefaultSharedPreferences(this);
     }
 
+    /**
+     * 设置当前前台 fragment
+     * @param container 容器 ID
+     * @param fragment fragment 对象
+     * @return 设置结果
+     */
     public final boolean setForegroundFragment(int container, BaseFragment fragment) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         if(_foregroundFragment != null)
@@ -176,22 +183,52 @@ public abstract class BaseActivity extends AppCompatActivity implements Logging 
         return true;
     }
 
+    /**
+     * 设置当前前台 fragment
+     * @param fragment fragment 对象
+     * @return 设置结果
+     */
     public final boolean setForegroundFragment(BaseFragment fragment) {
         return setForegroundFragment(fragment.getBaseActivityContainer(), fragment);
     }
 
+
+    /**
+     * 当所有权限被授权时回调
+     * @param code
+     */
     public void onAllPermissionsGranted(int code) {
 
     }
 
+
+    /**
+     * 当 Activity 被创建时的事件。代替 onCreate()
+     * @param savedInstanceState
+     */
     protected abstract void onInitialize(@Nullable Bundle savedInstanceState);
+
+    /**
+     * 获取当前的 Activity 的 layout
+     * @return 范例： R.layout.activity_forum
+     */
     protected abstract int getBaseLayout();
+
+    /**
+     * 获取当前的 Activity 的顶层容器的 ID
+     * @return 范例： R.id.login_container
+     */
     protected abstract int getBaseContainer();
 
 //    protected int getBaseFragmentContainer() {
 //        throw new NotImplementedError("Called setForegroundFragment(fragment) but getBaseFragmentContainer() not implemented");
 //    }
 
+
+    /**
+     * 获取当前前台fragment
+     * @return
+     */
     public BaseFragment getForegroundFragment() {
         return _foregroundFragment;
     }

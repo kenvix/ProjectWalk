@@ -31,8 +31,13 @@ public abstract class BaseFragment extends Fragment implements Logging {
         return inflater.inflate(getFragmentContentLayout(), container, false);
     }
 
+    /**
+     * 当 fragment 被创建时的事件，禁止覆盖。使用 onInitialize()
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public final void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Invoker.invokeViewAutoLoader(this, view);
         onInitialize(view);
@@ -43,11 +48,29 @@ public abstract class BaseFragment extends Fragment implements Logging {
         return logTag == null ? (logTag = getBaseActivity().getClass().getSimpleName() + "_" + this.getClass().getSimpleName()) : logTag;
     }
 
+    /**
+     * 获取当前 fragment 所属 activity 的对象
+     * @return BaseActivity Object
+     */
     public BaseActivity getBaseActivity() {
         return (BaseActivity) getActivity();
     }
 
+    /**
+     * 当 fragment 被创建时的事件
+     * @param view
+     */
     protected abstract void onInitialize(@NonNull View view);
+
+    /**
+     * 获取当前的 fragment 的 layout
+     * @return 范例： R.layout.fragment_forum
+     */
     protected abstract int getFragmentContentLayout();
+
+    /**
+     * 获取当前的 fragment 所属 activity 的 fragment 容器的 ID
+     * @return 范例： R.id.main_fragment_container
+     */
     public abstract int getBaseActivityContainer();
 }

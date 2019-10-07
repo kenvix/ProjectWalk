@@ -12,6 +12,9 @@ import com.kenvix.walk.BuildConfig
 const val ACTIVITY_REQUEST_CAMERA = 0xf01
 const val ACTIVITY_REQUEST_ALBUM_IMAGE_SELECTOR = 0xf02
 
+/**
+ * 启动系统相机
+ */
 fun BaseActivity.startCameraActivity(): Uri {
     val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
 
@@ -24,6 +27,9 @@ fun BaseActivity.startCameraActivity(): Uri {
     return contentUri
 }
 
+/**
+ * 启动系统相册
+ */
 fun BaseActivity.startAlbumImageSelectorActivity() {
     val photoPickerIntent = Intent(Intent.ACTION_PICK, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI)
     photoPickerIntent.type = "image/*"

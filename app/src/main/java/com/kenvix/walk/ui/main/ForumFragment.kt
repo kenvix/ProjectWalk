@@ -9,6 +9,9 @@ import com.kenvix.walk.R
 import com.kenvix.walk.ui.base.BaseFragment
 import com.kenvix.walk.utils.WebViewInitializer
 
+/**
+ * 论坛
+ */
 class ForumFragment : BaseFragment() {
     @ViewAutoLoad lateinit var forumWebView: WebView
 
@@ -19,6 +22,7 @@ class ForumFragment : BaseFragment() {
         webViewInitializer.setupWithCommonConfig(ApplicationProperties.ForumUrl)
     }
 
+    //转发给 webViewInitializer
     fun onKeyDown(keyCode: Int, event: KeyEvent?) = webViewInitializer.onKeyDownCallback(keyCode, event)
     override fun getFragmentContentLayout(): Int = R.layout.fragment_forum
     override fun getBaseActivityContainer(): Int = R.id.main_fragment_container

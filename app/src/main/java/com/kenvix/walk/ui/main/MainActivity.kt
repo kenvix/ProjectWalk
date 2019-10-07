@@ -15,6 +15,7 @@ import com.kenvix.walk.ui.base.BaseActivity
 import com.kenvix.utils.android.annotation.ViewAutoLoad
 import com.kenvix.utils.lang.toUnit
 import com.kenvix.walk.services.WalkCounterService
+import com.kenvix.walk.ui.login.LoginActivity
 import com.kenvix.walk.utils.*
 
 class MainActivity : BaseActivity() {
@@ -46,10 +47,16 @@ class MainActivity : BaseActivity() {
             }
             true
         }
+
+        LoginActivity.startActivity(this, ACTIVITY_REQUEST_CODE)
     }
 
+    /**
+     * 当按返回等特殊键时发生的事件
+     */
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (foregroundFragment == forumFragment) {
+            //转发给 forumFragment
             if (forumFragment.onKeyDown(keyCode, event))
                 return true
         }
@@ -87,7 +94,7 @@ class MainActivity : BaseActivity() {
 
     companion object Info {
         @Suppress("MemberVisibilityCanBePrivate")
-        const val ACTIVITY_REQUEST_CODE = 0xa00
+        private const val ACTIVITY_REQUEST_CODE = 0xa00
         const val PERMISSION_REQUEST_CODE = 0xb00
         const val BACK_WAIT_TIME = 2000
 

@@ -5,6 +5,9 @@ import android.support.annotation.Nullable;
 
 import com.kenvix.walk.ui.base.BaseActivity;
 
+/**
+ * 我的收藏
+ */
 public class MyFavoriteActivity extends BaseActivity {
     @Override
     protected void onInitialize(@Nullable Bundle savedInstanceState) {

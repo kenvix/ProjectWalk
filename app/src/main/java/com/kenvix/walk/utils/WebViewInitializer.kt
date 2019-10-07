@@ -7,9 +7,16 @@ import android.webkit.WebView
 import com.kenvix.walk.ApplicationEnvironment
 import com.kenvix.walk.ApplicationProperties
 
+/**
+ * Webview 初始化器
+ * @param webView 需要初始化的 webview
+ */
 class WebViewInitializer(private val webView: WebView) {
     private var extendUserAgent = "Kenvix Generic Android Client"
 
+    /**
+     * 初始化一般 webview 设置
+     */
     @SuppressLint("SetJavaScriptEnabled")
     fun initDefaultWebSettings() {
         val webSettings = webView.settings
@@ -39,6 +46,9 @@ class WebViewInitializer(private val webView: WebView) {
         webSettings.loadsImagesAutomatically = true
     }
 
+    /**
+     * 禁用放缩
+     */
     fun disableZoom() {
         val webSettings = webView.settings
 
@@ -53,10 +63,18 @@ class WebViewInitializer(private val webView: WebView) {
         //TODO: Loading Anime
     }
 
+    /**
+     * 让 webview 加载指定页面
+     * @param url 页面地址
+     */
     fun loadUrl(url: String) {
         webView.loadUrl(url)
     }
 
+    /**
+     * 按常见的策略来初始化 webview
+     * @param url 页面地址
+     */
     @JvmOverloads
     fun setupWithCommonConfig(url: String? = null) {
         enableFirstLoadAnime()
@@ -67,6 +85,12 @@ class WebViewInitializer(private val webView: WebView) {
             loadUrl(ApplicationProperties.ForumUrl)
     }
 
+    /**
+     * 处理按键被按下时 webview 的事件
+     * 一定要用它，否则用户按返回会直接退出 activity
+     * @param keyCode  直接传入从 activity 获得的参数
+     * @param event 直接传入从 activity 获得的参数
+     */
     fun onKeyDownCallback(keyCode: Int, event: KeyEvent?): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
             webView.goBack()
