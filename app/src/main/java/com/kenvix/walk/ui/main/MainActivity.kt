@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.support.design.widget.BottomNavigationView
 import android.view.KeyEvent
 import android.view.MenuItem
@@ -16,6 +17,7 @@ import com.kenvix.utils.android.annotation.ViewAutoLoad
 import com.kenvix.utils.lang.toUnit
 import com.kenvix.walk.services.WalkCounterService
 import com.kenvix.walk.ui.login.LoginActivity
+import com.kenvix.walk.ui.camera.CameraCapturerActivity
 import com.kenvix.walk.utils.*
 
 class MainActivity : BaseActivity() {
@@ -27,12 +29,15 @@ class MainActivity : BaseActivity() {
     private lateinit var serviceConnection: WalkCounterServiceConnection
     private var backClickTime: Long = 0
 
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
+
+    }
     override fun onInitialize(savedInstanceState: Bundle?) {
         checkAndRequireRuntimePermissions(PERMISSION_REQUEST_CODE, *REQUIRED_PERMISSIONS)
         mainFragment = MainFragment()
         forumFragment = ForumFragment()
         foregroundFragment = mainFragment
-
         serviceConnection = WalkCounterServiceConnection(this)
         logger.finest("MainActivity Initialized")
 
@@ -44,11 +49,14 @@ class MainActivity : BaseActivity() {
             when (it.itemId) {
                 R.id.main_navigation_me -> foregroundFragment = mainFragment
                 R.id.main_navigation_forum -> foregroundFragment = forumFragment
+                R.id.main_navigation_recognition->{
+                    val intent = Intent(this,CameraCapturerActivity::class.java)
+                    startActivity(intent)
+
+                }
             }
             true
         }
-
-        LoginActivity.startActivity(this, ACTIVITY_REQUEST_CODE)
     }
 
     /**
@@ -71,7 +79,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun getBaseLayout(): Int = R.layout.activity_main
-    override fun getBaseContainer(): Int = R.id.main_container
+    override fun getBaseContainer(): Int = R.id.main_fragment_container
 
     fun startWalkCounter() {
         startServiceInThreadPool(WalkCounterService::class.java) {

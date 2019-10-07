@@ -3,7 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt' //Kenvix Annotation Preprocessor for Kotlin Projects
 
-def pathToOpenCv = "E:\\RT\\OpenCV3-android-sdk"
 
 android {
     compileSdkVersion 28
@@ -15,10 +14,11 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        ndk {
-            //abiFilters 'arm64-v8a'
-            abiFilters 'x86_64'
-        }
+//        ndk {
+//            abiFilters 'arm64-v8a'
+//            //abiFilters 'x86_64'
+//
+//        }
     }
     buildTypes {
         release {
@@ -36,16 +36,15 @@ android {
     }
     buildToolsVersion = '28.0.3'
 
-    externalNativeBuild {
-        cmake {
-            path file('CMakeLists.txt')
-        }
-    }
+//    externalNativeBuild {
+//        cmake {
+//            path file('CMakeLists.txt')
+//        }
+//    }
 
     sourceSets {
         main {
             java.srcDirs = ['src/main/java']
-            jniLibs.srcDirs "${pathToOpenCv}/sdk/native/libs"
         }
     }
 }
@@ -63,7 +62,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-
+    implementation 'com.github.forvv231:EasyNavigation:1.0.3'
 
     implementation project(path: ':utils-android')
 
