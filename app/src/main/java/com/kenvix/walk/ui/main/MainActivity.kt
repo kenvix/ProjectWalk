@@ -16,6 +16,7 @@ import com.kenvix.walk.ui.base.BaseActivity
 import com.kenvix.utils.android.annotation.ViewAutoLoad
 import com.kenvix.utils.lang.toUnit
 import com.kenvix.walk.services.WalkCounterService
+import com.kenvix.walk.ui.camera.CameraCapturerActivity
 import com.kenvix.walk.utils.*
 
 class MainActivity : BaseActivity() {
@@ -36,7 +37,6 @@ class MainActivity : BaseActivity() {
         mainFragment = MainFragment()
         forumFragment = ForumFragment()
         foregroundFragment = mainFragment
-
         serviceConnection = WalkCounterServiceConnection(this)
         logger.finest("MainActivity Initialized")
 
@@ -48,9 +48,15 @@ class MainActivity : BaseActivity() {
             when (it.itemId) {
                 R.id.main_navigation_me -> foregroundFragment = mainFragment
                 R.id.main_navigation_forum -> foregroundFragment = forumFragment
+                R.id.main_navigation_recognition->{
+                    val intent = Intent(this,CameraCapturerActivity::class.java)
+                    startActivity(intent)
+
+                }
             }
             true
         }
+
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {

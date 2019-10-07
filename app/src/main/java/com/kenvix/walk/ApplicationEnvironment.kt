@@ -99,7 +99,7 @@ class ApplicationEnvironment : Application(), Logging {
         instance = this
 
         AndroidLoggingHandler.applyToKenvixLogger()
-        JniMain.onApplicationStart()
+       // JniMain.onApplicationStart()
 
         logger.finer("Application Initialized")
 
