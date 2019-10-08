@@ -20,6 +20,6 @@ public class CommunicaionFragment extends BaseActivity {
 
     @Override
     protected int getBaseContainer() {
-        return ;
+        return 0; //TODO
     }
 }

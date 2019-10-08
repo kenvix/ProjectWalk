@@ -20,6 +20,6 @@ public class OpinionFragment extends BaseFragment {
 
     @Override
     public int getBaseActivityContainer() {
-        return ;
+        return 0; //TODO
     }
 }

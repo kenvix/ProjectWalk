@@ -21,6 +21,6 @@ public class CapturePicturesFragment extends BaseFragment {
 
     @Override
     public int getBaseActivityContainer() {
-        return ;
+        return 0; //TODO
     }
 }

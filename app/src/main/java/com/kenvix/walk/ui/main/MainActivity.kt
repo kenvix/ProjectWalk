@@ -18,6 +18,7 @@ import com.kenvix.utils.lang.toUnit
 import com.kenvix.walk.services.WalkCounterService
 import com.kenvix.walk.ui.login.LoginActivity
 import com.kenvix.walk.ui.camera.CameraCapturerActivity
+import com.kenvix.walk.ui.recognizer.RecognizerActivity
 import com.kenvix.walk.utils.*
 
 class MainActivity : BaseActivity() {
@@ -29,10 +30,6 @@ class MainActivity : BaseActivity() {
     private lateinit var serviceConnection: WalkCounterServiceConnection
     private var backClickTime: Long = 0
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
-
-    }
     override fun onInitialize(savedInstanceState: Bundle?) {
         checkAndRequireRuntimePermissions(PERMISSION_REQUEST_CODE, *REQUIRED_PERMISSIONS)
         mainFragment = MainFragment()
@@ -45,6 +42,8 @@ class MainActivity : BaseActivity() {
         //bindWalkCounter()
         //CameraCapturerActivity.startActivity(this, ACTIVITY_REQUEST_CODE, CameraCapturerActivity.From.Camera)
         //ForumFragment.startActivity(this, ACTIVITY_REQUEST_CODE)
+        RecognizerActivity.startActivity(this, ACTIVITY_REQUEST_CODE, null)
+
         mainNavView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.main_navigation_me -> foregroundFragment = mainFragment

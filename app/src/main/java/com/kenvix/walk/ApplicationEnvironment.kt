@@ -72,6 +72,9 @@ class ApplicationEnvironment : Application(), Logging {
         }
 
         @JvmStatic
+        fun getRawResourceUri(id: Int) = "android.resource://${appContext.packageName}/$id"
+
+        @JvmStatic
         val viewResources
             get() = appContext.resources
 
