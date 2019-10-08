@@ -18,7 +18,7 @@ import okhttp3.Request
 import java.io.IOException
 import java.lang.IllegalArgumentException
 
-class LoginAsyncTask : BaseAsyncTask<UserPass, Void, LoginRequestResult>() {
+class LoginAsyncTask : BaseAsyncTask<UserPass, Void, LoginRequestResult, Void>() {
     override fun doTask(vararg params: UserPass?): LoginRequestResult {
         if (params.isNotEmpty()) {
             val userPass = params[0]

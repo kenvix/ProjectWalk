@@ -6,19 +6,21 @@ import android.support.annotation.Nullable;
 import com.kenvix.utils.log.LogUtilsKt;
 import com.kenvix.utils.log.Logging;
 
+import java.lang.ref.WeakReference;
 import java.util.function.Consumer;
 
 /**
  * 基 AsyncTask
  * @param <T>
- * @param <U>
- * @param <X>
+ * @param <P>
+ * @param <R>
  */
-public abstract class BaseAsyncTask<T, U, X> extends AsyncTask<T, U, X> implements Logging {
+public abstract class BaseAsyncTask<T, P, R, C> extends AsyncTask<T, P, R> implements Logging {
     private Exception exception = null;
     private String taskName;
     @Nullable
     private Consumer<Exception> onExceptionCallback;
+    private WeakReference<C> connection;
 
     /**
      * Run task default implement
@@ -27,7 +29,7 @@ public abstract class BaseAsyncTask<T, U, X> extends AsyncTask<T, U, X> implemen
      */
     @Override
     @SafeVarargs
-    protected final @Nullable X doInBackground(T... ts) {
+    protected final @Nullable R doInBackground(T... ts) {
         try {
             return doTask(ts);
         } catch (Exception e) {
@@ -40,10 +42,10 @@ public abstract class BaseAsyncTask<T, U, X> extends AsyncTask<T, U, X> implemen
     /**
      * 所要执行的任务
      * @param ts 任务的参数列表
-     * @return X 任务结果
+     * @return R 任务结果
      * @throws Exception 任务执行过程中抛出的异常
      */
-    protected abstract X doTask(T... ts) throws Exception;
+    protected abstract R doTask(T... ts) throws Exception;
     protected void onException(Exception exception) {
         LogUtilsKt.warning(getLogger(), exception, "Task failed");
 
@@ -94,6 +96,24 @@ public abstract class BaseAsyncTask<T, U, X> extends AsyncTask<T, U, X> implemen
      */
     public boolean isExceptionThrown() {
         return exception != null;
+    }
+
+    /**
+     * 设置基于弱引用的连接对象。一般是 Activity 等任务的创建者
+     * @param connection
+     */
+    public void setConnection(C connection) {
+        this.connection = new WeakReference<>(connection);
+    }
+
+
+    /**
+     * 获取强引用的的连接对象
+     * @return
+     */
+    @Nullable
+    public C getConnection() {
+        return connection.get();
     }
 }
 

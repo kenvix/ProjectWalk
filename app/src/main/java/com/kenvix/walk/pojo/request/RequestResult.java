@@ -21,6 +21,11 @@ public abstract class RequestResult<T> {
         this.info = info;
     }
 
-    public abstract T getData();
-    public abstract void setData(T data);
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
 }
