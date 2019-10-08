@@ -32,11 +32,11 @@
         android:contentDescription="@string/title_recognize_result"
         android:layout_weight="1" />
 
-
     <ScrollView
         android:id="@+id/recognizer_scroll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:visibility="invisible"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
@@ -45,63 +45,134 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/recognizer_title"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:text="@string/title_recognize_result"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/small_title_font_size" />
+
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:textSize="@dimen/common_font_size"
+                        android:text="菜名"
+                        android:layout_weight="1"
+                        android:textColor="@color/terminalText"
+                        android:layout_height="0dp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:textSize="@dimen/common_font_size"
+                        android:text="单位卡路里含量"
+                        android:layout_weight="1"
+                        android:textColor="@color/terminalText"
+                        android:layout_height="0dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:textSize="@dimen/common_font_size"
+                        android:text="检测置信度"
+                        android:textColor="@color/terminalText"
+                        android:layout_weight="1"
+                        android:layout_height="0dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:id="@+id/recognizer_text_name"
+                        android:textSize="@dimen/common_font_size"
+                        android:text="菜名"
+                        android:layout_weight="1"
+                        android:layout_height="0dp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:id="@+id/recognizer_text_calorie"
+                        android:textSize="@dimen/common_font_size"
+                        android:text="单位卡路里含量"
+                        android:layout_weight="1"
+                        android:layout_height="0dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:id="@+id/recognizer_text_probability"
+                        android:textSize="@dimen/common_font_size"
+                        android:text="检测置信度"
+                        android:layout_weight="1"
+                        android:layout_height="0dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:textSize="@dimen/small_title_font_size"
+                android:text="饮食问题和建议"
+                android:layout_marginTop="17dp"
+                android:layout_weight="2"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="0dp" />
+
+            <TableLayout
+                android:layout_width="wrap_content"
                 android:orientation="vertical"
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/recognizer_text_problem0"
                     android:layout_width="match_parent"
                     android:textSize="@dimen/common_font_size"
-                    android:text="菜名"
-                    android:layout_weight="1"
-                    android:layout_height="0dp" />
+                    android:text="没有问题"
+                    android:textColor="@color/ok"/>
                 <TextView
+                    android:id="@+id/recognizer_text_problem1"
                     android:layout_width="match_parent"
-                    android:textSize="@dimen/common_font_size"
-                    android:text="单位卡路里含量"
-                    android:layout_weight="1"
-                    android:layout_height="0dp"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:textSize="@dimen/common_font_size"
-                    android:text="检测置信度"
-                    android:layout_weight="1"
-                    android:layout_height="0dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_height="wrap_content">
+                    android:textSize="@dimen/small_font_size"
+                    android:text="没有问题"
+                    android:textColor="@color/ok"
+                    android:visibility="invisible" />
 
                 <TextView
+                    android:id="@+id/recognizer_text_problem2"
                     android:layout_width="match_parent"
-                    android:id="@+id/recognizer_text_name"
                     android:textSize="@dimen/common_font_size"
-                    android:text="菜名"
-                    android:layout_weight="1"
-                    android:layout_height="0dp" />
+                    android:text="没有问题"
+                    android:visibility="invisible"
+                    android:textColor="@color/ok"/>
                 <TextView
+                    android:id="@+id/recognizer_text_problem3"
                     android:layout_width="match_parent"
-                    android:id="@+id/recognizer_text_calorie"
-                    android:textSize="@dimen/common_font_size"
-                    android:text="单位卡路里含量"
-                    android:layout_weight="1"
-                    android:layout_height="0dp"/>
+                    android:textSize="@dimen/small_font_size"
+                    android:text="没有问题"
+                    android:textColor="@color/ok"
+                    android:visibility="invisible"
+                    android:layout_weight="1" />
                 <TextView
+                    android:id="@+id/recognizer_text_problem4"
                     android:layout_width="match_parent"
-                    android:id="@+id/recognizer_text_probability"
                     android:textSize="@dimen/common_font_size"
-                    android:text="检测置信度"
-                    android:layout_weight="1"
-                    android:layout_height="0dp" />
-            </LinearLayout>
+                    android:text="没有问题"
+                    android:visibility="invisible"
+                    android:textColor="@color/ok"
+                    android:layout_weight="1" />
+            </TableLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

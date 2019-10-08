@@ -9,7 +9,9 @@
     <dimen name="item_server_text_layout_padding_horizontal">10dp</dimen>
     <dimen name="item_server_text_layout_padding_top">6dp</dimen>
     <dimen name="item_server_text_name_height">23dp</dimen>
-    <dimen name="common_font_size">20sp</dimen>
+    <dimen name="small_font_size">13sp</dimen>
+    <dimen name="common_font_size">18sp</dimen>
+    <dimen name="small_title_font_size">25sp</dimen>
     <dimen name="connection_command_area">151dp</dimen>
     <dimen name="connection_area_padding">3dp</dimen>
 
