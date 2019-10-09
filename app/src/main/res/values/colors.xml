@@ -6,6 +6,7 @@
     <color name="colorAccent">#9D89D1</color>
     <color name="terminalText">#000</color>
     <color name="bg_press">#ebebeb</color>
+    <color name="account_lock_font_color"> </color>
     <color name="white">#FFFFFF</color>
     <color name="error">#AF3C3C</color>
     <color name="ok">#347737</color>

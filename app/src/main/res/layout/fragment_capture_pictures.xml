@@ -1,15 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#20616161"
-        android:gravity="center"
-        android:text="获取图片"
-        android:textColor="#ffffff"
-        android:textSize="50sp" />
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/headImg"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:scaleType="fitXY"
+            fresco:placeholderImageScaleType="centerCrop"
+            fresco:roundAsCircle="true" />
+
+
+        <Button
+            android:id="@+id/takePicture"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/bg_login_submit"
+            android:gravity="center"
+            android:text="拍照"
+            android:textColor="#5F5959"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/photoAlbum"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_login_submit"
+            android:gravity="center"
+            android:text="相册"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
