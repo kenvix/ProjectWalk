@@ -81,7 +81,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_logon_pwd"
+            android:id="@+id/ll_login_pwd"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginLeft="24dp"
@@ -222,91 +222,5 @@
             android:layout_weight="3" />
 
     </LinearLayout>
-    <!--
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
 
-            <View
-                android:id="@+id/ll_login_layer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:alpha="0"
-                android:background="#80000000" />
-
-            <LinearLayout
-                android:id="@+id/ll_login_pull"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:background="@drawable/bg_login_thirdpart"
-                android:orientation="vertical"
-                android:translationY="80dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/lay_12"
-                    android:gravity="center"
-                    android:text="@string/login_other_hint"
-                    android:textColor="#cacaca"
-                    android:textSize="14sp" />
-
-                <LinearLayout
-                    android:id="@+id/ll_login_options"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:orientation="horizontal"
-                    android:paddingBottom="@dimen/lay_16"
-                    android:visibility="visible">
-
-                    <ImageView
-                        android:id="@+id/ib_login_weibo"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/ic_material"
-                        android:contentDescription="@null"
-                        android:padding="8dp"
-                        android:scaleType="centerInside"
-                        android:src="@mipmap/ic_login_3party_weibo" />
-
-                    <ImageView
-                        android:id="@+id/ib_login_wx"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/ic_material"
-                        android:contentDescription="@null"
-                        android:padding="8dp"
-                        android:scaleType="centerInside"
-                        android:src="@mipmap/ic_login_3party_wechat" />
-
-                    <ImageView
-                        android:id="@+id/ib_login_qq"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/ic_material"
-                        android:contentDescription="@null"
-                        android:padding="8dp"
-                        android:scaleType="centerInside"
-                        android:src="@mipmap/ic_login_3party_qq" />
-
-                    <ImageView
-                        android:id="@+id/ib_login_csdn"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/ic_material"
-                        android:contentDescription="@null"
-                        android:padding="8dp"
-                        android:scaleType="centerInside"
-                        android:src="@mipmap/ic_login_3party_csdn" />
-                </LinearLayout>
-            </LinearLayout>
-
-        </FrameLayout>
-        -->
 </FrameLayout>

@@ -6,19 +6,153 @@
     tools:context="com.kenvix.walk.ui.main.MainFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/main_step_count"
+        android:layout_width="10dp"
+        android:layout_height="10dp" />
     <LinearLayout
-        android:id="@+id/fragment_main_container"
+        android:id="@+id/food_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="200dp"
+        android:background="#5EBFEBEB"
         tools:context="com.kenvix.walk.ui.main.MainActivity">
 
-            <ImageView
-                android:id="@+id/personal_information_avatar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="avatar"
-                android:visibility="visible" />
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="@mipmap/food"/>
+        <Button
+            android:id="@+id/food_introduce"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:text = "饮食推荐"
+            android:textSize="20dp"
+            android:background="@drawable/person_button"
+            android:gravity="center"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/history_container"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="255dp"
+        android:background="#5EBFEBEB"
+        tools:context="com.kenvix.walk.ui.main.MainActivity">
+        <ImageView
+
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="@mipmap/history"/>
+        <Button
+            android:id="@+id/history"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text = "历史记录"
+            android:textSize="20dp"
+            android:background="@drawable/person_button"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/find_container"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="310dp"
+        android:background="#5EBFEBEB"
+        tools:context="com.kenvix.walk.ui.main.MainActivity">
+        <ImageView
+
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="@mipmap/find"/>
+        <Button
+            android:id="@+id/find"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text = "快速查询能量"
+            android:textSize="20dp"
+            android:background="@drawable/person_button"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/collect_container"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="365dp"
+        android:background="#5EBFEBEB"
+        tools:context="com.kenvix.walk.ui.main.MainActivity">
+        <ImageView
+
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="@mipmap/collect"/>
+        <Button
+            android:id="@+id/collect"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text = "我的收藏"
+            android:textSize="20dp"
+            android:background="@drawable/person_button"
+            android:gravity="center"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/food_book_container"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="420dp"
+        android:background="#5EBFEBEB"
+        tools:context="com.kenvix.walk.ui.main.MainActivity">
+        <ImageView
+
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="@mipmap/book"/>
+        <Button
+            android:id="@+id/book"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text = "食谱推荐"
+            android:textSize="20dp"
+            android:background="@drawable/person_button"
+            android:gravity="center"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/record_container"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="475dp"
+        android:background="#5EBFEBEB"
+        tools:context="com.kenvix.walk.ui.main.MainActivity">
+        <ImageView
+
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="@mipmap/record"/>
+        <Button
+            android:id="@+id/record"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text = "能量统计"
+            android:textSize="20dp"
+            android:background="@drawable/person_button"
+            android:gravity="center"/>
+    </LinearLayout>
+
+
 
 </FrameLayout>
