@@ -21,6 +21,7 @@ add_library(
         # Provides a relative path to your source file(s).
         src/main/jni/jni-main.c
         src/main/jni/cv-utils.cpp
+        src/main/jni/display-utils.c
 )
 
 target_link_libraries(

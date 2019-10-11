@@ -13,21 +13,12 @@
         android:orientation="vertical"
         tools:context="com.kenvix.walk.ui.main.MainActivity">
 
-        <TextView
-            android:id="@+id/main_step_label"
-            android:layout_width="match_parent"
-            android:text="@string/walk_count"
-            android:layout_height="match_parent" />
-        <TextView
-            android:id="@+id/main_step_count"
-            android:layout_width="match_parent"
-            android:text="@string/walk_count"
-            android:layout_height="match_parent" />
-
-        <WebView
-            android:id="@+id/main_webview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            <ImageView
+                android:id="@+id/personal_information_avatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="avatar"
+                android:visibility="visible" />
     </LinearLayout>
 
 </FrameLayout>

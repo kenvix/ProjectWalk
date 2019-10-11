@@ -23,11 +23,13 @@ import com.kenvix.walk.utils.*
 
 class MainActivity : BaseActivity() {
     @ViewAutoLoad lateinit var mainNavView: BottomNavigationView
-    @ViewAutoLoad lateinit var mainStepCount: TextView
+    //@ViewAutoLoad lateinit var mainStepCount: TextView
 
     private lateinit var mainFragment: MainFragment
     private val forumFragment by lazy(LazyThreadSafetyMode.NONE) { ForumFragment() }
+    private val exerciseFragment by lazy(LazyThreadSafetyMode.NONE) { ExerciseFragment() }
     private val personalFragment by lazy(LazyThreadSafetyMode.NONE) { PersonalInformationFragment() }
+
     private val serviceConnection by lazy(LazyThreadSafetyMode.NONE) { WalkCounterServiceConnection(this) }
     private val recognizerSelectorFragment by lazy(LazyThreadSafetyMode.NONE) { RecognizeSelectorFragment() }
     private var backClickTime: Long = 0
@@ -48,7 +50,8 @@ class MainActivity : BaseActivity() {
             when (it.itemId) {
                 R.id.main_navigation_me -> { foregroundFragment = personalFragment; true }
                 R.id.main_navigation_forum -> { foregroundFragment = forumFragment; true }
-                R.id.main_navigation_index -> { foregroundFragment = personalFragment; true }
+                R.id.main_navigation_index -> { foregroundFragment = mainFragment; true }
+                R.id.main_navigation_exercise -> { foregroundFragment = exerciseFragment; true }
                 R.id.main_navigation_recognition -> {
                     CameraCapturerActivity.startActivity(this, ACTIVITY_REQUEST_CODE)
                     false

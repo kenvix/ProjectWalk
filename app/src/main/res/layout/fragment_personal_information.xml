@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/forum_container"
-    tools:context=".ui.main.ForumFragment"
-    android:orientation="horizontal">
+    tools:context="com.kenvix.walk.ui.main.PersonalInformationFragment">
 
-    <ImageView
-        android:id="@+id/personal_information_avatar"
-        android:contentDescription="avatar"
+    <LinearLayout
+        android:id="@+id/fragment_personal_information_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.kenvix.walk.ui.main.PersonalInformationFragment">
 
-</android.support.constraint.ConstraintLayout>
+        <ImageView
+            android:id="@+id/personal_information_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="avatar"
+            android:visibility="visible" />
+    </LinearLayout>
+</FrameLayout>
