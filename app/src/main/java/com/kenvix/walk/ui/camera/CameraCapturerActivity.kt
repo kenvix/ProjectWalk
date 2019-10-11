@@ -17,6 +17,7 @@ import android.widget.ImageView
 import com.kenvix.utils.android.annotation.ViewAutoLoad
 import com.kenvix.walk.R
 import com.kenvix.walk.ui.base.BaseActivity
+import com.kenvix.walk.ui.recognizer.RecognizerActivity
 import com.kenvix.walk.utils.*
 import java.io.File
 
@@ -24,8 +25,8 @@ import java.io.File
 class CameraCapturerActivity : BaseActivity() {
     private lateinit var fileUri: Uri
     private lateinit var loadingAlertDialog: android.app.AlertDialog
-    @ViewAutoLoad
-    lateinit var cameraCapturerImage: ImageView
+
+    @ViewAutoLoad lateinit var cameraCapturerImage: ImageView
 
     override fun onInitialize(savedInstanceState: Bundle?) {
         checkAndRequireRuntimePermissions(PERMISSION_REQUEST_CODE, *REQUIRED_PERMISSIONS)
@@ -36,9 +37,17 @@ class CameraCapturerActivity : BaseActivity() {
 
         when(requestCode) {
             ACTIVITY_REQUEST_CAMERA, ACTIVITY_REQUEST_ALBUM_IMAGE_SELECTOR -> {
-                loadingAlertDialog.dismiss()
-                cameraCapturerImage.setImageURI(fileUri)
+                if (resultCode != 0) {
+                    loadingAlertDialog.dismiss()
+                    cameraCapturerImage.setImageURI(fileUri)
 
+                    val urlString = fileUri.toString()
+
+                    if (urlString.length > 1)
+                        RecognizerActivity.startActivity(this, ACTIVITY_REQUEST_CODE, urlString)
+                }
+
+                finish()
             }
             else -> logger.warning("Unknown activity request code $requestCode")
         }
@@ -67,16 +76,14 @@ class CameraCapturerActivity : BaseActivity() {
                         true, getString(R.string.prompt_waiting_file)) {
                     if (!it) finish()
                 }
-
-
             }
         }
     }
 
     companion object Info {
         @Suppress("MemberVisibilityCanBePrivate")
-        const val ACTIVITY_REQUEST_CODE = 0xa01
-        const val PERMISSION_REQUEST_CODE = 0xb01
+        private const val ACTIVITY_REQUEST_CODE = 0xa01
+        private const val PERMISSION_REQUEST_CODE = 0xb01
 
         @JvmStatic
         val REQUIRED_PERMISSIONS = arrayOf(

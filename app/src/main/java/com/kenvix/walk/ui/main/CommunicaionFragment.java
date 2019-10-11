@@ -1,4 +1,4 @@
-package com.kenvix.walk.ui.menu.fragment;
+package com.kenvix.walk.ui.main;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

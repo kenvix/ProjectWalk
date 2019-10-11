@@ -2,7 +2,7 @@ package com.kenvix.walk;
 
 final class JniMain {
     static {
-      //  System.loadLibrary("main-lib");
+        System.loadLibrary("main-lib");
     }
 
     private JniMain() {}

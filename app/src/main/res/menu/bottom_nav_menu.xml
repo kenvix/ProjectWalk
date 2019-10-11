@@ -2,9 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/main_navigation_me"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_me" />
+        android:id="@+id/main_navigation_index"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="首页" />
+
+    <item
+        android:id="@+id/main_navigation_forum"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_forum" />
 
     <item
         android:id="@+id/main_navigation_recognition"
@@ -12,7 +17,12 @@
         android:title="@string/title_start_recognition" />
 
     <item
-        android:id="@+id/main_navigation_forum"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_forum" />
+        android:id="@+id/main_navigation_exercise"
+        android:icon="@drawable/ic_tag"
+        android:title="健身" />
+
+    <item
+        android:id="@+id/main_navigation_me"
+        android:icon="@drawable/ic_user_2"
+        android:title="@string/title_me" />
 </menu>

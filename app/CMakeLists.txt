@@ -1,9 +1,6 @@
 cmake_minimum_required(VERSION 3.4.1)
 
-
 include_directories(src/main/jni/include/)
-
-
 
 #Android Log
 find_library( # Sets the name of the path variable.
@@ -32,4 +29,5 @@ target_link_libraries(
 
         # Links the target library to the log library
         # included in the NDK.
+        ${log-lib} android -ljnigraphics
 )

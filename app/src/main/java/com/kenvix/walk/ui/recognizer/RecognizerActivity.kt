@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar
 import android.view.View
 import android.widget.TextView
 import com.kenvix.utils.android.annotation.ViewAutoLoad
+import com.kenvix.utils.android.annotation.form.FormNotEmpty
 import com.kenvix.walk.ApplicationEnvironment
 import com.kenvix.walk.R
 import com.kenvix.walk.pojo.request.RecognizerRequestResult

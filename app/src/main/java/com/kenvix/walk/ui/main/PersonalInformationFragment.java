@@ -1,4 +1,4 @@
-package com.kenvix.walk.ui.menu.fragment;
+package com.kenvix.walk.ui.main;
 
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -7,8 +7,7 @@ import android.view.View;
 import com.kenvix.walk.R;
 import com.kenvix.walk.ui.base.BaseFragment;
 
-public class CapturePicturesFragment extends BaseFragment {
-
+public class PersonalInformationFragment extends BaseFragment {
     @Override
     protected void onInitialize(@NonNull View view) {
 
@@ -16,11 +15,11 @@ public class CapturePicturesFragment extends BaseFragment {
 
     @Override
     protected int getFragmentContentLayout() {
-        return R.layout.fragment_capture_pictures;
+        return R.layout.fragment_personal_information;
     }
 
     @Override
     public int getBaseActivityContainer() {
-        return 0; //TODO
+        return 0;//TODO
     }
 }

@@ -26,35 +26,35 @@ class MainActivity : BaseActivity() {
     @ViewAutoLoad lateinit var mainStepCount: TextView
 
     private lateinit var mainFragment: MainFragment
-    private lateinit var forumFragment: ForumFragment
-    private lateinit var serviceConnection: WalkCounterServiceConnection
+    private val forumFragment by lazy(LazyThreadSafetyMode.NONE) { ForumFragment() }
+    private val personalFragment by lazy(LazyThreadSafetyMode.NONE) { PersonalInformationFragment() }
+    private val serviceConnection by lazy(LazyThreadSafetyMode.NONE) { WalkCounterServiceConnection(this) }
+    private val recognizerSelectorFragment by lazy(LazyThreadSafetyMode.NONE) { RecognizeSelectorFragment() }
     private var backClickTime: Long = 0
 
     override fun onInitialize(savedInstanceState: Bundle?) {
         checkAndRequireRuntimePermissions(PERMISSION_REQUEST_CODE, *REQUIRED_PERMISSIONS)
         mainFragment = MainFragment()
-        forumFragment = ForumFragment()
-        foregroundFragment = mainFragment
-        serviceConnection = WalkCounterServiceConnection(this)
-        logger.finest("MainActivity Initialized")
 
+        foregroundFragment = mainFragment
+        logger.finest("MainActivity Initialized")
         //startWalkCounter()
         //bindWalkCounter()
         //CameraCapturerActivity.startActivity(this, ACTIVITY_REQUEST_CODE, CameraCapturerActivity.From.Camera)
         //ForumFragment.startActivity(this, ACTIVITY_REQUEST_CODE)
-        RecognizerActivity.startActivity(this, ACTIVITY_REQUEST_CODE, null)
+        //RecognizerActivity.startActivity(this, ACTIVITY_REQUEST_CODE, null)
 
         mainNavView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.main_navigation_me -> foregroundFragment = mainFragment
-                R.id.main_navigation_forum -> foregroundFragment = forumFragment
-                R.id.main_navigation_recognition->{
-                    val intent = Intent(this,CameraCapturerActivity::class.java)
-                    startActivity(intent)
-
+                R.id.main_navigation_me -> { foregroundFragment = personalFragment; true }
+                R.id.main_navigation_forum -> { foregroundFragment = forumFragment; true }
+                R.id.main_navigation_index -> { foregroundFragment = personalFragment; true }
+                R.id.main_navigation_recognition -> {
+                    CameraCapturerActivity.startActivity(this, ACTIVITY_REQUEST_CODE)
+                    false
                 }
+                else -> false
             }
-            true
         }
     }
 
