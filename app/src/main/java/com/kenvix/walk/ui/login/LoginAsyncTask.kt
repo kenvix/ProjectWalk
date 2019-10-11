@@ -16,9 +16,10 @@ import com.kenvix.walk.ui.base.BaseAsyncTask
 import okhttp3.FormBody
 import okhttp3.Request
 import java.io.IOException
+import java.lang.Exception
 import java.lang.IllegalArgumentException
 
-class LoginAsyncTask : BaseAsyncTask<UserPass, Void, LoginRequestResult, Void>() {
+class LoginAsyncTask : BaseAsyncTask<UserPass, Void, LoginRequestResult, LoginActivity>() {
     override fun doTask(vararg params: UserPass?): LoginRequestResult {
         if (params.isNotEmpty()) {
             val userPass = params[0]
@@ -55,5 +56,20 @@ class LoginAsyncTask : BaseAsyncTask<UserPass, Void, LoginRequestResult, Void>()
         }
 
         throw IllegalArgumentException("Missing UserPass argument")
+    }
+
+    override fun onPostExecute(result: LoginRequestResult?) {
+        super.onPostExecute(result)
+
+        connection?.loginSubmit?.isClickable = true
+        connection?.loginSubmit?.text = "登录"
+
+        if (isExceptionThrown) {
+            connection?.showAlertDialog(exception.localizedMessage, "登录失败") { }
+        } else if (result != null) {
+            connection?.showAlertDialog(result.data.name, "登录成功") {
+                connection?.finish()
+            }
+        }
     }
 }

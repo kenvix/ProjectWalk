@@ -2,9 +2,18 @@ package com.kenvix.walk.pojo.common;
 
 public class UserInfo {
     private long uid;
+    private String name;
     private String email;
     private int role;
     private double credit;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public long getUid() {
         return uid;

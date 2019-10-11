@@ -82,7 +82,7 @@ class WebViewInitializer(private val webView: WebView) {
         disableZoom()
 
         if (url != null)
-            loadUrl(ApplicationProperties.ForumUrl)
+            loadUrl(url)
     }
 
     /**

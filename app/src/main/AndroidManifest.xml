@@ -45,6 +45,10 @@
             android:name=".ui.login.LoginActivity"
             android:label="登录" />
 
+        <activity
+            android:name=".ui.other.WebViewActivity"
+            android:label="WebView" />
+
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@drawable/bg_login_input_ok" />

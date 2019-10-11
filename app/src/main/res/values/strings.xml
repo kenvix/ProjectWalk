@@ -22,8 +22,8 @@
     <string name="error_invalid_number_less_or_equal">数字不合法，应小于或等于 %d</string>
     <string name="error_invalid_number_more_or_equal">数字不合法，应大于或等于 %d</string>
     <!-- Strings related to Server List -->
-    <string name="app_name">Project Walk</string>
-    <string name="title_main">Rcon 服务器列表</string>
+    <string name="app_name">Kaka 能量</string>
+    <string name="title_main">Kaka 能量</string>
     <string name="no_server">未添加任何 MineCraft 服务器</string>
     <string name="action_settings">设置</string>
     <string name="action_duplicate">制作副本</string>

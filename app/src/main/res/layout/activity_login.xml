@@ -46,7 +46,7 @@
                 android:background="#dededf" />
 
             <EditText
-                android:id="@+id/et_login_username"
+                android:id="@+id/login_username"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="16dp"
@@ -106,8 +106,10 @@
                 android:background="#dededf" />
 
             <EditText
-                android:id="@+id/et_login_pwd"
+                android:id="@+id/login_password"
                 android:layout_width="0dp"
+                android:password="true"
+
                 android:layout_height="match_parent"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
